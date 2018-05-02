@@ -1,0 +1,473 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.genetic_test_result.v0
+
+concept
+	[at0000]	-- Genetic test result
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Gustavo Bacelar-Silva; Priscila Maranhao">
+		["email"] = <"mail@gustavobacelar.com; priscilamaranhao@gmail.com">
+		["organisation"] = <"VirtualCare; MEDCIDES/FMUP">
+		["date"] = <"2017-07-11">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results and interpretation of genetic tests  in an individual. ">
+			use = <"- Use to record the genetic test result; 
+- Use just to record genetic results. ">
+			keywords = <"genetic", "DNA", "cytogenetic", "biochemical", "molecular">
+			misuse = <"- Not to be used  as genetic report. ">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Ricardo Cruz-Correia, FMUP, Portugal", "Pedro Vieira-Marques, FMUP, Portugal", "Duarte Ferreira, FMUP, Portugal">
+	other_details = <
+		["references"] = <"- Claustres M, Kozich V, Dequeker E, Fowler B, Hehir-Kwa, Miller K, Oosterwijk C, Peterlin B, Ravenswaaij-Arts CV, Zimmermann U, Zuffardi O, Hastings RJ, Barton DE. Recommendations for reporting results of diagnostic genetic testing (biochemical, cytogenetic and molecular genetic). European Journal of Human Genetics, 22.160-170, 2014. 
+
+- Understanding Genetics: A New York, Mid-Atlantic Guide for patients and health professionals. Genetic alliance; The New york-mid-atlantic Consortium for genetic and newborn screening services. 2009. Available: www.ncbi.nlm.gov/pubmed/23304754. 
+">
+		["MD5-CAM-1.0.1"] = <"08F725C77DD1285B9F41C1246A446A57">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Genetic test result
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0107] occurrences matches {0..1} matches {	-- Description of genetic test
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									allow_archetype CLUSTER[at0102] occurrences matches {0..*} matches {	-- Sample detail
+										include
+											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen(-[a-zA-Z0-9_]+)*\.v0/}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Test result 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0028, 	-- Normal 
+													at0029, 	-- Abnormal test
+													at0030]	-- Failed test
+												}
+											}
+										}
+									}
+									ELEMENT[at0106] occurrences matches {0..1} matches {	-- Genetic scope
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									CLUSTER[at0099] occurrences matches {0..1} matches {	-- Genetic sequence
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0098] occurrences matches {0..1} matches {	-- Genetic sequence file
+												value matches {
+													DV_MULTIMEDIA matches {
+														media_type matches {[openEHR::]}
+													}
+												}
+											}
+											ELEMENT[at0100] occurrences matches {0..1} matches {	-- Genetic sequence location
+												value matches {
+													DV_URI matches {*}
+												}
+											}
+										}
+									}
+									ELEMENT[at0101] occurrences matches {0..1} matches {	-- Clinical information provided
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0114] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0115] occurrences matches {0..1} matches {	-- Confounding factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									allow_archetype CLUSTER[at0116] occurrences matches {0..*} matches {	-- Patient state details
+										include
+											archetype_id/value matches {/.*/}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0041] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0075] occurrences matches {0..*} matches {	-- Responsible laboratory
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0108] occurrences matches {0..1} matches {	-- Laboratory test identifier
+						value matches {
+							DV_IDENTIFIER matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0074] occurrences matches {0..*} matches {	-- Test device details
+						include
+							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device_details(-[a-zA-Z0-9_]+)*\.v1 (1)/}
+					}
+					CLUSTER[at0063] occurrences matches {0..1} matches {	-- Test request details 
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0109] occurrences matches {0..1} matches {	-- Original test requested sequence
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							allow_archetype CLUSTER[at0072] occurrences matches {0..*} matches {	-- Requester 
+								include
+									archetype_id/value matches {/.*/}
+							}
+							ELEMENT[at0110] occurrences matches {0..1} matches {	-- Requester order identifier
+								value matches {
+									DV_IDENTIFIER matches {*}
+								}
+							}
+							ELEMENT[at0111] occurrences matches {0..1} matches {	-- Receiver order identifier
+								value matches {
+									DV_IDENTIFIER matches {*}
+								}
+							}
+							allow_archetype CLUSTER[at0112] occurrences matches {0..*} matches {	-- Distribution list
+								include
+									archetype_id/value matches {/.*/}
+								exclude
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.distribution(-[a-zA-Z0-9_]+)*\.v1/}
+							}
+						}
+					}
+					ELEMENT[at0103] occurrences matches {0..1} matches {	-- Laboratory scope
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0104, 	-- Diagnostic laboratory
+									at0105]	-- Research laboratory
+								}
+							}
+						}
+					}
+					allow_archetype CLUSTER[at0091] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Genetic test result">
+					description = <"The findings and interpretation of genetic tests results. ">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Any event. ">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0024"] = <
+					text = <"Comment">
+					description = <"Specific comments about the genetic test result. ">
+				>
+				["at0027"] = <
+					text = <"Test result ">
+					description = <"Genetic test result. ">
+				>
+				["at0028"] = <
+					text = <"Normal ">
+					description = <"Normal test - not pathogenic variant was observed. ">
+				>
+				["at0029"] = <
+					text = <"Abnormal test">
+					description = <"Pathogenic variant was observed. ">
+				>
+				["at0030"] = <
+					text = <"Failed test">
+					description = <"Failed test (e.g missing sample, wrong collection, wrong storage, etc)">
+				>
+				["at0041"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0063"] = <
+					text = <"Test request details ">
+					description = <"Details concerning genetic test requested. ">
+				>
+				["at0072"] = <
+					text = <"Requester ">
+					description = <"Details of the clinician or organisation requesting the laboratoy test result. ">
+				>
+				["at0074"] = <
+					text = <"Test device details">
+					description = <"Additional structured details of laboratory test methodology followed (e.g: cytogenetic, biochemica, etc). For example, structured details about the laboratory method and data interpretation used. ">
+				>
+				["at0075"] = <
+					text = <"Responsible laboratory">
+					description = <"Demographic details of the laboratory with responsability for the test. ">
+				>
+				["at0091"] = <
+					text = <"Extension">
+					description = <"Slot to allow extension to support localisation or alugnment with ther standards/reference models. ">
+				>
+				["at0098"] = <
+					text = <"Genetic sequence file">
+					description = <"Genetic sequence (e.g: file, upload of images)">
+				>
+				["at0099"] = <
+					text = <"Genetic sequence">
+					description = <"Genetic sequence. ">
+				>
+				["at0100"] = <
+					text = <"Genetic sequence location">
+					description = <"Genetic sequence location (e.g site). ">
+				>
+				["at0101"] = <
+					text = <"Clinical information provided">
+					description = <"Description of clinical information available at the time of interpretation of results, which may include a link to the original clinical information provided in the test request. In HL7 fhir this information  is held within the linked requestDetail.clinical Notes.  fhir_mapping: DiagnosticReport.requestDetail.ClinicalNotes">
+				>
+				["at0102"] = <
+					text = <"Sample detail">
+					description = <"To record details of a laboratory specimen. ">
+				>
+				["at0103"] = <
+					text = <"Laboratory scope">
+					description = <"Where the genetic test was performed. ">
+				>
+				["at0104"] = <
+					text = <"Diagnostic laboratory">
+					description = <"Diagnostic laboratory">
+				>
+				["at0105"] = <
+					text = <"Research laboratory">
+					description = <"Research laboratory">
+				>
+				["at0106"] = <
+					text = <"Genetic scope">
+					description = <"Genetic scope - according to HGNC symbols and names. site (http://www.genenames.org/">
+				>
+				["at0107"] = <
+					text = <"Description of genetic test">
+					description = <"Description the genetic test performed. ">
+				>
+				["at0108"] = <
+					text = <"Laboratory test identifier">
+					description = <"The local identifier given to the laboratory test result by the laboratory information system. ">
+				>
+				["at0109"] = <
+					text = <"Original test requested sequence">
+					description = <"Identification of the original laboratory test requested, where the test requested difers from the test actually performed. ">
+				>
+				["at0110"] = <
+					text = <"Requester order identifier">
+					description = <"The local ID assigned to the test order by the order requester. (Equivalent  to the HL7 placer order identifier). ">
+				>
+				["at0111"] = <
+					text = <"Receiver order identifier">
+					description = <"The local ID assignd to the test order by the  order filler, usually by the Laboratoy Information System (LIS).Assigning an identifier to a requeste by the Laboratory Information System (LIS) enables tracking progress of the request and enables linking  results to requests,. It also provides a reference  to assist with enquiries and it is usuall equivalent to the HL7 Filler Order Identifier. ">
+				>
+				["at0112"] = <
+					text = <"Distribution list">
+					description = <"Details of a clinician or organisation who will receive a copy of the laboratory test results. ">
+				>
+				["at0114"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0115"] = <
+					text = <"Confounding factors">
+					description = <"Record any issues or factors that may impact on the measurement of genetic test result, e.g: fed/fasting status; medications, sample storage, etc.">
+				>
+				["at0116"] = <
+					text = <"Patient state details">
+					description = <"Details of patient state that may alter interpretation of the laboratory.">
+				>
+			>
+		>
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Genetic test result">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0024"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0027"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0028"] = <
+					text = <"*Normal (pt)">
+					description = <"*Normal test(pt)">
+				>
+				["at0029"] = <
+					text = <"*Abnormal test(pt)">
+					description = <"*pathogenic variant (pt)">
+				>
+				["at0030"] = <
+					text = <"*Fail test(pt)">
+					description = <"*Fail test  (e.g missing sample, wrong collection, wrong storage, etc)(pt)">
+				>
+				["at0041"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0063"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0072"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0074"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0075"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0091"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0098"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0099"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0100"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0101"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0102"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0103"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0104"] = <
+					text = <"*Diagnostic(pt)">
+					description = <"**(pt)">
+				>
+				["at0105"] = <
+					text = <"*Research laboratory(pt)">
+					description = <"*Research laboratory(pt)">
+				>
+				["at0106"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0107"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0108"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0109"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0110"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0111"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0112"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0114"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0115"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0116"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+	>

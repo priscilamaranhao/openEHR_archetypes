@@ -1,0 +1,248 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.malnutrition_universal_screening_tool_must.v0
+
+concept
+	[at0000]	-- Malnutrition universal screening tool (MUST)*(pt)
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhão; Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDS-FMUP">
+		["date"] = <"2017-03-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The purpose is a screening to adults  for all types of hospitalization. *(pt)">
+			use = <"To be used in adults;
+To be used in assess nutritional risk (e.g.: undernutrition, obesity);
+To be used for all  health profissionals. *(pt)">
+			keywords = <"Nutrition assessment", "Malnutrition", "Screening", "MUST">
+			misuse = <"Not to be used in children. *(pt)">
+			copyright = <"OpenEHR Foudation*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia; MEDCIDS-FMUP; Portugal", "Pedro Marques, MEDCIDS-FMUP; Portugal", "Duarte Ferreira, MEDCIDS-FMUP; Portugal">
+	other_details = <
+		["references"] = <"Stratton, R.J.; Hackston, A.; Longmore, D.; Dixon, R.; Price, S.; Stroud, M. et al. Malnutrition in hospital outpatients in patients: prevalence, concurrent validity and ease of use of the ´malnutrition universal screening tool´ (MUST) for adults. Br J Nutr, 92 (5):799-808, 2004. 
+
+Beghetto, M.G.; Manna, B.; Candal, A.; Mello, E.D,; Polanczyk, C.A. Triagem nutricional em adultos hospitalizados. Rev. Nutr, Campinas, 21(5): 589-601, 2008.">
+		["MD5-CAM-1.0.1"] = <"AAD45CF2DA92E55B4D5E63423373AC28">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Malnutrition universal screening tool (MUST)*(pt)
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(pt)
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Body index mass (BMI)
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- 0: BMI > 20 (>30)
+													at0006, 	-- 1: BMI: 18,5-20,0
+													at0007]	-- 2: BMI < 18.5 
+												}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Weight loss
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0009, 	-- 0: Weight lost < 5%
+													at0010, 	-- 1: Weight lost 5-10%
+													at0011]	-- 2: Weight lost > 10%
+												}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Severe disease
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0013, 	-- None 
+													at0014]	-- 2: Seriously ill and drastically reduced nutritional intake or whether the patients gets not feed for > 5days.  
+												}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Malnutrition universal screening tool">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"*0: BMI > 20 (>30)(pt)">
+					description = <"*The patient presents BMI  > 20 (>30). (pt)">
+				>
+				["at0006"] = <
+					text = <"*1: BMI: 18,5-20,0(pt)">
+					description = <"*1 point to the patient that presents BMI  18,5 -20,0.(pt)">
+				>
+				["at0007"] = <
+					text = <"*2: BMI < 18.5 (pt)">
+					description = <"*2 points to the patient that presents BMI  < 18.5(pt)">
+				>
+				["at0008"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0009"] = <
+					text = <"*0: Weight lost < 5%(pt)">
+					description = <"*The patient lost 5% of weight. (pt)">
+				>
+				["at0010"] = <
+					text = <"*1: Weight lost 5-10%(pt)">
+					description = <"*The patient lost 5-10% of weight. (pt)">
+				>
+				["at0011"] = <
+					text = <"*2: Weight lost > 10%(pt)">
+					description = <"* The patient lost >10% of weight. (pt)">
+				>
+				["at0012"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0013"] = <
+					text = <"*None (pt)">
+					description = <"*No serious ill or drastically reduced nutritional intake. (pt)">
+				>
+				["at0014"] = <
+					text = <"*2: Seriously ill and drastically reduced nutritional intake or whether the patients gets not feed for > 5days.  (pt)">
+					description = <"*2 points to the patient that present seriously ill and drastically reduced nutritional intake or whether the patients gets not feed for > 5days.(pt)">
+				>
+				["at0015"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Malnutrition universal screening tool (MUST)*(pt)">
+					description = <" Screening for nutritional risk using the tool (MUST)*(pt)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"*Any event(pt)">
+					description = <"Point in time optinal. *(pt)">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Body index mass (BMI)">
+					description = <"*Measure height and weight to get a BMI. ">
+				>
+				["at0005"] = <
+					text = <"0: BMI > 20 (>30)">
+					description = <"0 point to the patient that presents BMI  > 20 (>30). ">
+				>
+				["at0006"] = <
+					text = <"1: BMI: 18,5-20,0">
+					description = <"1 point to the patient that presents BMI  18,5 -20,0.">
+				>
+				["at0007"] = <
+					text = <"2: BMI < 18.5 ">
+					description = <"2 points to the patient that presents BMI  < 18.5">
+				>
+				["at0008"] = <
+					text = <"Weight loss">
+					description = <"*Note percentage unplanned weight loss. ">
+				>
+				["at0009"] = <
+					text = <"0: Weight lost < 5%">
+					description = <"The patient lost 5% of weight. ">
+				>
+				["at0010"] = <
+					text = <"1: Weight lost 5-10%">
+					description = <"The patient lost 5-10% of weight. ">
+				>
+				["at0011"] = <
+					text = <"2: Weight lost > 10%">
+					description = <" The patient lost >10% of weight. ">
+				>
+				["at0012"] = <
+					text = <"Severe disease">
+					description = <"*Establish acute disease effect.">
+				>
+				["at0013"] = <
+					text = <"None ">
+					description = <"N0 point to the patient that no presents serious ill or drastic reduced nutritional intake or whether the patient gets not feed for > 5days. ">
+				>
+				["at0014"] = <
+					text = <"2: Seriously ill and drastically reduced nutritional intake or whether the patients gets not feed for > 5days.  ">
+					description = <"2 points to the patient that present seriously ill and drastically reduced nutritional intake or whether the patients gets not feed for > 5days.">
+				>
+				["at0015"] = <
+					text = <"Total score">
+					description = <"Total score: (0  score:  Low risk - Routine clinical care ) - Repeat screening hospital – weekly; Care Homes – monthly; Community – annually  for special groups  e.g. those >75 yrs; 1 score (Medium Risk - Observe) -  Document dietary intake for 3 days;  If adequate – little concern and repeat screening: Hospital – weekly;  Care Home – at least monthly;  Community – at least every 2-3 months;  If inadequate – clinical concern – follow local policy, set goals, improve and increase overall nutritional intake, monitor and review care plan regularly. 2 or more score (High risk - Treat) - Refer to dietitian, nutritional support team or implement local policy; Set goals, improve and increase overall nutrition intake; Monitor and review care plan hospital - weekly; Care home - monthly; Community - monthly. ">
+				>
+			>
+		>
+	>

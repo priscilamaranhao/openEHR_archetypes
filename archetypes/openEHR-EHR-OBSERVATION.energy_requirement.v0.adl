@@ -1,0 +1,439 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.energy_requirement.v0
+
+concept
+	[at0000]	-- Energy requirement
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["en-us"] = <
+			language = <[ISO_639-1::en-us]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhão e Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDS-FMUP; VIRTUAL CARE">
+		["date"] = <"2016-12-09">
+	>
+	details = <
+		["en-us"] = <
+			language = <[ISO_639-1::en-us]>
+			purpose = <"Energy requirement aims to maintain body size, body composition and a level of necessary and desirable physical activity consistent with long-term good health. ">
+			use = <"Used for recording energy requirement of children and adults.
+
+Used for recording daily energy requirement and daily energy intake. 
+
+
+">
+			keywords = <"*Energy(pt)", "*Energy metabolism(pt)", "*Energy expenditure(pt)", "*Energy recommedantion(pt)">
+			misuse = <"This archetype is not be used to record the nutrients recommendation.">
+			copyright = <"*(pt)">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"Energy requirement aims to maintain body size, body composition and a level of necessary and desirable physical activity consistent with long-term good health. ">
+			use = <"Used for recording energy requirement of children and adults.
+
+Used for recording daily energy requirement and daily energy intake. 
+
+">
+			keywords = <"Energy", "Energy metabolism", "Energy expenditure", "Energy recommedantion">
+			misuse = <"This archetype is not to be used to record the nutrients recommendation. 
+
+Not to be used to record energy intake by the individual. ">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Correia", "Pedro Marques", "Duarte Ferreira">
+	other_details = <
+		["references"] = <"FAO (Food and Agriculture Organization). Human Energy Requirements. Report of a Joint FAO/WHO/UNU Expert Consultation. [Technical Report Series 1]. Rome: FAO; 2004.
+
+World Health Organization. Human energy requirements. Rome: WHO; 2001. Technical Report Series; 2001.
+
+Araújo, AFC; Oliveira, MGOA. Recomendações nutricionais. In: Vasconcelos, MJOB. Nutrição clínica - obstetrícia e pediatria. Rio de Janeiro: Medbook, 2001. 
+
+Carvalho, FGD; Monteiro, B.A; Goulart-de-Andrade, DE. et al. Métodos de avaliação de necessidades nutricionais e consumo de energia em humanos. rev. Simbio-Logias, v.5,n.7; Dez/2012. 
+
+Rodrigues, JCD; Lamarca, F; Oliveira, CL; Avesani, CM. Estimativa das necessidades energéticas em pacientes com doença renal crônica. Rev. Nutr., Campinas 26 (1):97-107, jan/fev, 2013. 
+
+Avesani, CM; Santos; NSJ; Cuppari, L. Necessidades e recomendações de energia. In: Nutrição Clínica no adulto. Ed. Manole, 2005.">
+		["MD5-CAM-1.0.1"] = <"ADE92368C699B56E39A510D4F22CF61B">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Energy requirement
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- *Tree(pt)
+								items cardinality matches {1..*; unordered} matches {
+									CLUSTER[at0007] matches {	-- Total Energy Expenditure
+										items cardinality matches {2..*; unordered} matches {
+											ELEMENT[at0009] matches {	-- Metabolic response to food
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::121]>
+														list = <
+															["1"] = <
+																units = <"kcal">
+																precision = <|0|>
+															>
+															["2"] = <
+																units = <"J">
+															>
+														>
+													>
+												}
+											}
+											CLUSTER[at0029] occurrences matches {0..1} matches {	-- Physical Activity Level 
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0030] occurrences matches {0..1} matches {	-- Sedentary
+														value matches {
+															C_DV_QUANTITY <
+															>
+														}
+													}
+													ELEMENT[at0031] occurrences matches {0..1} matches {	-- Moderately active
+														value matches {
+															C_DV_QUANTITY <
+															>
+														}
+													}
+													ELEMENT[at0032] occurrences matches {0..1} matches {	-- Active
+														value matches {
+															C_DV_QUANTITY <
+															>
+														}
+													}
+													ELEMENT[at0033] occurrences matches {0..1} matches {	-- Extremely active
+														value matches {
+															C_DV_QUANTITY <
+															>
+														}
+													}
+												}
+											}
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Basal Metabolism Rate
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::121]>
+														list = <
+															["1"] = <
+																units = <"kcal">
+																precision = <|0|>
+															>
+															["2"] = <
+																units = <"J">
+															>
+														>
+													>
+												}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Rest Energy Expenditure
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::121]>
+												list = <
+													["1"] = <
+														units = <"kcal">
+														precision = <|0|>
+													>
+													["2"] = <
+														units = <"J">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Estimated Energy Requirement 
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::121]>
+												list = <
+													["1"] = <
+														units = <"kcal">
+														precision = <|0|>
+													>
+													["2"] = <
+														units = <"J">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		state matches {
+			HISTORY[at0019] matches {	-- State Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0020] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0018] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Confounding Factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									allow_archetype CLUSTER[at0027] occurrences matches {0..*} matches {	-- Position
+										include
+											archetype_id/value matches {/openEHR-EHR-CLUSTER\.position(-[a-zA-Z0-9_]+)*\.v0/}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- State of dress
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0023, 	-- Lightly clothed/underwear
+													at0024, 	-- Fully clothed, including shoes
+													at0025]	-- Nappy/diaper
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0011] matches {	-- Tree
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0012] matches {	-- Technique 
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Energy requirement">
+					description = <"Energy requirement is the amount of food energy needed to balance energy expenditure. ">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"Total Energy Expenditure">
+					description = <"**(pt)">
+				>
+				["at0009"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0010"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0011"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0012"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0018"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0019"] = <
+					text = <"*State Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0020"] = <
+					text = <"*Any event(pt)">
+					description = <"**(pt)">
+				>
+				["at0021"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0022"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0023"] = <
+					text = <"*Lightly clothed/underwear(pt)">
+					description = <"*Clothing (pt)">
+				>
+				["at0024"] = <
+					text = <"*Fully clothed, including shoes(pt)">
+					description = <"*Clothing which may add significantly to weight, including shoes(pt)">
+				>
+				["at0025"] = <
+					text = <"*Nappy/diaper(pt)">
+					description = <"*Wearing only a nappy.(pt)">
+				>
+				["at0027"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0028"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0029"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0030"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0031"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0032"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0033"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+		["en-us"] = <
+			items = <
+				["at0000"] = <
+					text = <"Energy requirement">
+					description = <"Energy requirement is the amount of food energy needed to balance energy expenditure. ">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"Basal Metabolism Rate">
+					description = <"Assessment of basal metabolism rate of the individual.">
+				>
+				["at0007"] = <
+					text = <"Total Energy Expenditure">
+					description = <"Measurement of total energy expenditure (TEE) which is the sum of the basal metabolic rate, thermic effect of feeding and physical activity level. ">
+				>
+				["at0009"] = <
+					text = <"Metabolic response to food">
+					description = <"Measurement of metabolic response to food.">
+				>
+				["at0010"] = <
+					text = <"Rest Energy Expenditure">
+					description = <"Assessment of REE which is similar to basal metabolism rate although allows  the patient moves to the exam´s place. ">
+				>
+				["at0011"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0012"] = <
+					text = <"Technique ">
+					description = <"The technique to measure energy requirement can be classified in direct (e.g: direct calorimetry); indirect (e.g: indirect calorimetry and Doubly labeled water) and doubly indirect (e.g: Prediction equations). ">
+				>
+				["at0018"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0019"] = <
+					text = <"State Event Series">
+					description = <"@ internal @">
+				>
+				["at0020"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Confounding Factors">
+					description = <"Comment on and record other incidental factors that may be contributing to the energy requirement measurement. For example, fasting state; body temperature; physical activity level, weight, etc. ">
+				>
+				["at0022"] = <
+					text = <"State of dress">
+					description = <"Description of the state of dress of the person at the time of energy requirement assessment methods. ">
+				>
+				["at0023"] = <
+					text = <"Lightly clothed/underwear">
+					description = <"Clothing ">
+				>
+				["at0024"] = <
+					text = <"Fully clothed, including shoes">
+					description = <"Clothing which may add significantly to weight, including shoes">
+				>
+				["at0025"] = <
+					text = <"Nappy/diaper">
+					description = <"Wearing only a nappy.">
+				>
+				["at0027"] = <
+					text = <"Position">
+					description = <"The position of the subject at the time of measurement.">
+				>
+				["at0028"] = <
+					text = <"Estimated Energy Requirement ">
+					description = <"EER  was proposed  by Dietary Reference Intake (DRI) to determine energy requirement. ">
+				>
+				["at0029"] = <
+					text = <"Physical Activity Level ">
+					description = <"Physical activity level (PAL) = Total energy expenditure (TEE) for 24 hours expressed as a multiple of Basal metabolic rate (BMR), and calculated as TEE/BMR for 24 hours. In adult men and non-pregnant, non-lactating women, BMR times PAL is equal to TEE or the daily energy requirement.">
+				>
+				["at0030"] = <
+					text = <"Sedentary">
+					description = <"Physical activity level. ">
+				>
+				["at0031"] = <
+					text = <"Moderately active">
+					description = <"Physical activity level">
+				>
+				["at0032"] = <
+					text = <"Active">
+					description = <"Physical activity level. ">
+				>
+				["at0033"] = <
+					text = <"Extremely active">
+					description = <"Physical activity level. ">
+				>
+			>
+		>
+	>

@@ -1,0 +1,2842 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.eating_disorder_inventory_edi.v0
+
+concept
+	[at0000]	-- Eating disorder inventory - EDI
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhao; Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDS/FMUP; VirtualCare">
+		["date"] = <"2017-11-21">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The purpose of EDI is to assess behavior psycological characteristics of anorexia and bulimia. ">
+			use = <"To be used in adults and adolescents;
+
+To be used to identify risk behavior for eating disorders (anorexia and bulimia);
+
+To be used in clinical reserach and hospital service; 
+
+">
+			keywords = <"Anorexia", "Bulimia", "EDI", "Eating disorders">
+			misuse = <"Not to be used to eating disorders diagnosis;
+
+Not to be used to children, in this case use (KEDS) questionnaire. ">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia, MEDCIDS/FMUP - Portugal", "Pedro Vieira-Marques, MEDCIDS-FMUP, Portugal", "Duarte Gonçalves-Ferreira, MEDCIDS-FMUP, Portugal", "Marle Alvarenga, USP, Brasil">
+	other_details = <
+		["references"] = <"Garner, D.M; Olmstead, M.P; Polivy, J. Development and validation of a multidimensional eating disorder inventory for anorexia nervosa and bulimia. Int´L Journal of eating Disorder, v.2, n.2, 1983. ">
+		["MD5-CAM-1.0.1"] = <"D23D01744A1192CFB171C115A8E1567C">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Eating disorder inventory - EDI
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1. I eat sweets and carbohydrates without feeling nervous. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- Always
+													at0006, 	-- Usually
+													at0007, 	-- Often
+													at0008, 	-- Sometimes
+													at0009, 	-- Rarely
+													at0010]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 2. I think that my stomach is too big. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0012, 	-- Always
+													at0013, 	-- Usually
+													at0014, 	-- Often
+													at0015, 	-- Sometimes
+													at0016, 	-- Rarely
+													at0017]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- 3. I wish that I could return to the security of childhood. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0019, 	-- Always
+													at0020, 	-- Usually
+													at0021, 	-- Often
+													at0022, 	-- Sometimes
+													at0023, 	-- Rarely
+													at0024]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- 4. I eat when I am upset. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0026, 	-- Always
+													at0027, 	-- Usually
+													at0028, 	-- Often
+													at0029, 	-- Sometimes
+													at0030, 	-- Rarely
+													at0031]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0032] occurrences matches {0..1} matches {	-- 5. I stuff myself with food. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0094, 	-- Always
+													at0095, 	-- Usually
+													at0096, 	-- Often
+													at0097, 	-- Sometimes
+													at0098, 	-- Rarely
+													at0099]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- 6. I wish that I could be younger. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0100, 	-- Always
+													at0101, 	-- Usually
+													at0102, 	-- Often
+													at0103, 	-- Sometimes
+													at0104, 	-- Rarely
+													at0105]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- 7. I think about dieting. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0106, 	-- Always
+													at0107, 	-- Usually
+													at0108, 	-- Often
+													at0109, 	-- Sometimes
+													at0110, 	-- Rarely
+													at0111]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0041] occurrences matches {0..1} matches {	-- 8. I get frightened when my feelings are too too strong. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0112, 	-- Always
+													at0113, 	-- Usually
+													at0114, 	-- Often
+													at0115, 	-- Sometimes
+													at0116, 	-- Rarely
+													at0117]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0054] occurrences matches {0..1} matches {	-- 9. I think that my thighs are too large. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0118, 	-- Always
+													at0119, 	-- Usually
+													at0120, 	-- Often
+													at0121, 	-- Sometimes
+													at0122, 	-- Rarely
+													at0123]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0062] occurrences matches {0..1} matches {	-- 10. I feel ineffective as a person. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0124, 	-- Always
+													at0125, 	-- Usually
+													at0126, 	-- Often
+													at0127, 	-- Sometimes
+													at0128, 	-- Rarely
+													at0129]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0036] occurrences matches {0..1} matches {	-- 11. I feel extremely guilty after overating.
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0130, 	-- Always
+													at0131, 	-- Usually
+													at0132, 	-- Often
+													at0133, 	-- Sometimes
+													at0134, 	-- Rarely
+													at0135]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0055] occurrences matches {0..1} matches {	-- 12. I think that my stomach is just the right size. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0136, 	-- Always
+													at0137, 	-- Usually
+													at0138, 	-- Often
+													at0139, 	-- Sometimes
+													at0140, 	-- Rarely
+													at0141]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0081] occurrences matches {0..1} matches {	-- 13. Only outstanding per performance is a good enough in my family. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0142, 	-- Always
+													at0143, 	-- Usually
+													at0144, 	-- Often
+													at0145, 	-- Sometimes
+													at0146, 	-- Rarely
+													at0147]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0074] occurrences matches {0..1} matches {	-- 14. The happiest time in life is when you are a child. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0148, 	-- Always
+													at0149, 	-- Usually
+													at0150, 	-- Often
+													at0151, 	-- Sometimes
+													at0152, 	-- Rarely
+													at0153]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0087] occurrences matches {0..1} matches {	-- 15. I am open about my feelings. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0154, 	-- Always
+													at0155, 	-- Usually
+													at0156, 	-- Often
+													at0157, 	-- Sometimes
+													at0158, 	-- Rarely
+													at0159]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0037] occurrences matches {0..1} matches {	-- 16. I am terrified of gaining weight. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0160, 	-- Always
+													at0161, 	-- Usually
+													at0162, 	-- Often
+													at0163, 	-- Sometimes
+													at0164, 	-- Rarely
+													at0165]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0088] occurrences matches {0..1} matches {	-- 17. I trust others. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0166, 	-- Always
+													at0167, 	-- Usually
+													at0168, 	-- Often
+													at0169, 	-- Sometimes
+													at0170, 	-- Rarely
+													at0171]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0063] occurrences matches {0..1} matches {	-- 18. I feel alone in the world. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0172, 	-- Always
+													at0173, 	-- Usually
+													at0174, 	-- Often
+													at0175, 	-- Sometimes
+													at0176, 	-- Rarely
+													at0177]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0056] occurrences matches {0..1} matches {	-- 19. I feel satisfied with the shape of my body. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0178, 	-- Always
+													at0179, 	-- Usually
+													at0180, 	-- Often
+													at0181, 	-- Sometimes
+													at0182, 	-- Rarely
+													at0183]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0064] occurrences matches {0..1} matches {	-- 20. I feel generally in control of things in my life.  
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0184, 	-- Always
+													at0185, 	-- Usually
+													at0186, 	-- Often
+													at0187, 	-- Sometimes
+													at0188, 	-- Rarely
+													at0189]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0042] occurrences matches {0..1} matches {	-- 21. I get confused about wht emotion I am feeling. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0190, 	-- Always
+													at0191, 	-- Usually
+													at0192, 	-- Often
+													at0193, 	-- Sometimes
+													at0194, 	-- Rarely
+													at0195]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0075] occurrences matches {0..1} matches {	-- 22. I would rather be an adult that a child. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0196, 	-- Always
+													at0197, 	-- Usually
+													at0198, 	-- Often
+													at0199, 	-- Sometimes
+													at0200, 	-- Rarely
+													at0201]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0089] occurrences matches {0..1} matches {	-- 23. I can communicate with others easily. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0202, 	-- Always
+													at0203, 	-- Usually
+													at0204, 	-- Often
+													at0205, 	-- Sometimes
+													at0206, 	-- Rarely
+													at0207]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0065] occurrences matches {0..1} matches {	-- 24.  I wish I were someone else. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0208, 	-- Always
+													at0209, 	-- Usually
+													at0210, 	-- Often
+													at0211, 	-- Sometimes
+													at0212, 	-- Rarely
+													at0213]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0038] occurrences matches {0..1} matches {	-- 25. I exaggerate or magnifity the importance of weight. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0214, 	-- Always
+													at0215, 	-- Usually
+													at0216, 	-- Often
+													at0217, 	-- Sometimes
+													at0218, 	-- Rarely
+													at0219]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- 26. I can clearly identify what emotion I am feeling. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0220, 	-- Always
+													at0221, 	-- Usually
+													at0222, 	-- Often
+													at0223, 	-- Sometimes
+													at0224, 	-- Rarely
+													at0225]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0066] occurrences matches {0..1} matches {	-- 27. I feel inadequate. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0226, 	-- Always
+													at0227, 	-- Usually
+													at0228, 	-- Often
+													at0229, 	-- Sometimes
+													at0230, 	-- Rarely
+													at0231]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0033] occurrences matches {0..1} matches {	-- 28. I have gone on eating binges where I have felt that I could not stop.
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0232, 	-- Always
+													at0233, 	-- Usually
+													at0234, 	-- Often
+													at0235, 	-- Sometimes
+													at0236, 	-- Rarely
+													at0237]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0082] occurrences matches {0..1} matches {	-- 29. As a child, I tried very hard avoid disappointing my parents and teachers. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0238, 	-- Always
+													at0239, 	-- Usually
+													at0240, 	-- Often
+													at0241, 	-- Sometimes
+													at0242, 	-- Rarely
+													at0243]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0090] occurrences matches {0..1} matches {	-- 30. I have close relationships. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0244, 	-- Always
+													at0245, 	-- Usually
+													at0246, 	-- Often
+													at0247, 	-- Sometimes
+													at0248, 	-- Rarely
+													at0249]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- 31. I like the shape of my buttocks. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0250, 	-- Always
+													at0251, 	-- Usually
+													at0252, 	-- Often
+													at0253, 	-- Sometimes
+													at0254, 	-- Rarely
+													at0255]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0039] occurrences matches {0..1} matches {	-- 32. I am preoccupied with the desire to be thinner. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0256, 	-- Always
+													at0257, 	-- Usually
+													at0258, 	-- Often
+													at0259, 	-- Sometimes
+													at0260, 	-- Rarely
+													at0261]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- 33. I don´t know what´s going on inside me.
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0262, 	-- Always
+													at0263, 	-- Usually
+													at0264, 	-- Often
+													at0265, 	-- Sometimes
+													at0266, 	-- Rarely
+													at0267]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0091] occurrences matches {0..1} matches {	-- 34. I have trouble expressing my emotons to others. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0268, 	-- Always
+													at0269, 	-- Usually
+													at0270, 	-- Often
+													at0271, 	-- Sometimes
+													at0272, 	-- Rarely
+													at0273]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0076] occurrences matches {0..1} matches {	-- 35. The demands of adulhood are too great. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0274, 	-- Always
+													at0275, 	-- Usually
+													at0276, 	-- Often
+													at0277, 	-- Sometimes
+													at0278, 	-- Rarely
+													at0279]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0083] occurrences matches {0..1} matches {	-- 36. I hate being less that best at things. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0280, 	-- Always
+													at0281, 	-- Usually
+													at0282, 	-- Often
+													at0283, 	-- Sometimes
+													at0284, 	-- Rarely
+													at0285]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0067] occurrences matches {0..1} matches {	-- 37. I feel secure about myself. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0286, 	-- Always
+													at0287, 	-- Usually
+													at0288, 	-- Often
+													at0289, 	-- Sometimes
+													at0290, 	-- Rarely
+													at0291]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0034] occurrences matches {0..1} matches {	-- 38. I think about bingeing. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0292, 	-- Always
+													at0293, 	-- Usually
+													at0294, 	-- Often
+													at0295, 	-- Sometimes
+													at0296, 	-- Rarely
+													at0297]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- 39. I feel happy that I am not a child anymore. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0298, 	-- Always
+													at0299, 	-- Usually
+													at0300, 	-- Often
+													at0301, 	-- Sometimes
+													at0302, 	-- Rarely
+													at0303]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0045] occurrences matches {0..1} matches {	-- 40. I get confused as to whether or not I am hungry.
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0304, 	-- Always
+													at0305, 	-- Usually
+													at0306, 	-- Often
+													at0307, 	-- Sometimes
+													at0308, 	-- Rarely
+													at0309]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0068] occurrences matches {0..1} matches {	-- 41.  I have  a low opinion of myself. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0310, 	-- Always
+													at0311, 	-- Usually
+													at0312, 	-- Often
+													at0313, 	-- Sometimes
+													at0314, 	-- Rarely
+													at0315]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0069] occurrences matches {0..1} matches {	-- 42. I feel that I can achieve my standards. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0316, 	-- Always
+													at0317, 	-- Usually
+													at0318, 	-- Often
+													at0319, 	-- Sometimes
+													at0320, 	-- Rarely
+													at0321]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0084] occurrences matches {0..1} matches {	-- 43. My parents have expected excellence of me. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0322, 	-- Always
+													at0323, 	-- Usually
+													at0324, 	-- Often
+													at0325, 	-- Sometimes
+													at0326, 	-- Rarely
+													at0327]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0046] occurrences matches {0..1} matches {	-- 44. I worry that my feelings will get out of control. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0328, 	-- Always
+													at0329, 	-- Usually
+													at0330, 	-- Often
+													at0331, 	-- Sometimes
+													at0332, 	-- Rarely
+													at0333]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0058] occurrences matches {0..1} matches {	-- 45. I think my hips are too big. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0334, 	-- Always
+													at0335, 	-- Usually
+													at0336, 	-- Often
+													at0337, 	-- Sometimes
+													at0338, 	-- Rarely
+													at0339]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0051] occurrences matches {0..1} matches {	-- 46. I eat moderaly in front of others and stuff myself when they´re gone. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0340, 	-- Always
+													at0341, 	-- Usually
+													at0342, 	-- Often
+													at0343, 	-- Sometimes
+													at0344, 	-- Rarely
+													at0345]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0047] occurrences matches {0..1} matches {	-- 47. I feel bloated after eating a small meal. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0346, 	-- Always
+													at0347, 	-- Usually
+													at0348, 	-- Often
+													at0349, 	-- Sometimes
+													at0350, 	-- Rarely
+													at0351]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0079] occurrences matches {0..1} matches {	-- 48. I feel that people are happiest when they are children. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0352, 	-- Always
+													at0353, 	-- Usually
+													at0354, 	-- Often
+													at0355, 	-- Sometimes
+													at0356, 	-- Rarely
+													at0357]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0040] occurrences matches {0..1} matches {	-- 49. If I gain a pound, I worry that I will keep gaining. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0358, 	-- Always
+													at0359, 	-- Usually
+													at0360, 	-- Often
+													at0361, 	-- Sometimes
+													at0362, 	-- Rarely
+													at0363]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0070] occurrences matches {0..1} matches {	-- 50. I feel that I am worthwhile person. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0364, 	-- Always
+													at0365, 	-- Usually
+													at0366, 	-- Often
+													at0367, 	-- Sometimes
+													at0368, 	-- Rarely
+													at0369]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0048] occurrences matches {0..1} matches {	-- 51. When I am upset, I don´t know if I am sad, frightened or angry. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0370, 	-- Always
+													at0371, 	-- Usually
+													at0372, 	-- Often
+													at0373, 	-- Sometimes
+													at0374, 	-- Rarely
+													at0375]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0085] occurrences matches {0..1} matches {	-- 52. I feel that I must do things perfectly or not do them at all. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0376, 	-- Always
+													at0377, 	-- Usually
+													at0378, 	-- Often
+													at0379, 	-- Sometimes
+													at0380, 	-- Rarely
+													at0381]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0052] occurrences matches {0..1} matches {	-- 53. I have the thought of trying to vomit in order to lose weight. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0382, 	-- Always
+													at0383, 	-- Usually
+													at0384, 	-- Often
+													at0385, 	-- Sometimes
+													at0386, 	-- Rarely
+													at0387]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0092] occurrences matches {0..1} matches {	-- 54. I need to keep people at a certain distance (feel uncomfortable if someone tries to get too close). 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0388, 	-- Always
+													at0389, 	-- Usually
+													at0390, 	-- Often
+													at0391, 	-- Sometimes
+													at0392, 	-- Rarely
+													at0393]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0059] occurrences matches {0..1} matches {	-- 55. I think that my thighs are just the right size. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0394, 	-- Always
+													at0395, 	-- Usually
+													at0396, 	-- Often
+													at0397, 	-- Sometimes
+													at0398, 	-- Rarely
+													at0399]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0071] occurrences matches {0..1} matches {	-- 56. I feel empty inside (emotionally). 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0400, 	-- Always
+													at0401, 	-- Usually
+													at0402, 	-- Often
+													at0403, 	-- Sometimes
+													at0404, 	-- Rarely
+													at0405]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0093] occurrences matches {0..1} matches {	-- 57. I can talk about personal thoughts or feelings. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0406, 	-- Always
+													at0407, 	-- Usually
+													at0408, 	-- Often
+													at0409, 	-- Sometimes
+													at0410, 	-- Rarely
+													at0411]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0080] occurrences matches {0..1} matches {	-- 58. The best years of your life are when you become an adult. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0412, 	-- Always
+													at0413, 	-- Usually
+													at0414, 	-- Often
+													at0415, 	-- Sometimes
+													at0416, 	-- Rarely
+													at0417]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0060] occurrences matches {0..1} matches {	-- 59. I think by buttocks are too large. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0418, 	-- Always
+													at0419, 	-- Usually
+													at0420, 	-- Often
+													at0421, 	-- Sometimes
+													at0422, 	-- Rarely
+													at0423]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0049] occurrences matches {0..1} matches {	-- 60. I have feelings I can´t quite identify. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0424, 	-- Always
+													at0425, 	-- Usually
+													at0426, 	-- Often
+													at0427, 	-- Sometimes
+													at0428, 	-- Rarely
+													at0429]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0053] occurrences matches {0..1} matches {	-- 61. I eat or drink in secrecy. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0430, 	-- Always
+													at0431, 	-- Usually
+													at0432, 	-- Often
+													at0433, 	-- Sometimes
+													at0434, 	-- Rarely
+													at0435]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0061] occurrences matches {0..1} matches {	-- 62. I think that my hips are just the right size.
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0436, 	-- Always
+													at0437, 	-- Usually
+													at0438, 	-- Often
+													at0439, 	-- Sometimes
+													at0440, 	-- Rarely
+													at0441]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0086] occurrences matches {0..1} matches {	-- 63. I have extremely high goals. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0442, 	-- Always
+													at0443, 	-- Usually
+													at0444, 	-- Often
+													at0445, 	-- Sometimes
+													at0446, 	-- Rarely
+													at0447]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0050] occurrences matches {0..1} matches {	-- 64. When I am upset, I worry that I will start eating. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0448, 	-- Always
+													at0449, 	-- Usually
+													at0450, 	-- Often
+													at0451, 	-- Sometimes
+													at0452, 	-- Rarely
+													at0453]	-- Never
+												}
+											}
+										}
+									}
+									ELEMENT[at0454] occurrences matches {0..1} matches {	-- Total Test Score
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Eating disorder inventory - EDI">
+					description = <"Screening to eating behavior disorders. ">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"1. I eat sweets and carbohydrates without feeling nervous. ">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"2. I think that my stomach is too big. ">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"3. I wish that I could return to the security of childhood. ">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"4. I eat when I am upset. ">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"5. I stuff myself with food. ">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"28. I have gone on eating binges where I have felt that I could not stop.">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"38. I think about bingeing. ">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"7. I think about dieting. ">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"11. I feel extremely guilty after overating.">
+					description = <"">
+				>
+				["at0037"] = <
+					text = <"16. I am terrified of gaining weight. ">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"25. I exaggerate or magnifity the importance of weight. ">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"32. I am preoccupied with the desire to be thinner. ">
+					description = <"">
+				>
+				["at0040"] = <
+					text = <"49. If I gain a pound, I worry that I will keep gaining. ">
+					description = <"">
+				>
+				["at0041"] = <
+					text = <"8. I get frightened when my feelings are too too strong. ">
+					description = <"">
+				>
+				["at0042"] = <
+					text = <"21. I get confused about wht emotion I am feeling. ">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"26. I can clearly identify what emotion I am feeling. ">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"33. I don´t know what´s going on inside me.">
+					description = <"">
+				>
+				["at0045"] = <
+					text = <"40. I get confused as to whether or not I am hungry.">
+					description = <"">
+				>
+				["at0046"] = <
+					text = <"44. I worry that my feelings will get out of control. ">
+					description = <"">
+				>
+				["at0047"] = <
+					text = <"47. I feel bloated after eating a small meal. ">
+					description = <"">
+				>
+				["at0048"] = <
+					text = <"51. When I am upset, I don´t know if I am sad, frightened or angry. ">
+					description = <"">
+				>
+				["at0049"] = <
+					text = <"60. I have feelings I can´t quite identify. ">
+					description = <"">
+				>
+				["at0050"] = <
+					text = <"64. When I am upset, I worry that I will start eating. ">
+					description = <"">
+				>
+				["at0051"] = <
+					text = <"46. I eat moderaly in front of others and stuff myself when they´re gone. ">
+					description = <"">
+				>
+				["at0052"] = <
+					text = <"53. I have the thought of trying to vomit in order to lose weight. ">
+					description = <"">
+				>
+				["at0053"] = <
+					text = <"61. I eat or drink in secrecy. ">
+					description = <"">
+				>
+				["at0054"] = <
+					text = <"9. I think that my thighs are too large. ">
+					description = <"">
+				>
+				["at0055"] = <
+					text = <"12. I think that my stomach is just the right size. ">
+					description = <"">
+				>
+				["at0056"] = <
+					text = <"19. I feel satisfied with the shape of my body. ">
+					description = <"">
+				>
+				["at0057"] = <
+					text = <"31. I like the shape of my buttocks. ">
+					description = <"">
+				>
+				["at0058"] = <
+					text = <"45. I think my hips are too big. ">
+					description = <"">
+				>
+				["at0059"] = <
+					text = <"55. I think that my thighs are just the right size. ">
+					description = <"">
+				>
+				["at0060"] = <
+					text = <"59. I think by buttocks are too large. ">
+					description = <"">
+				>
+				["at0061"] = <
+					text = <"62. I think that my hips are just the right size.">
+					description = <"">
+				>
+				["at0062"] = <
+					text = <"10. I feel ineffective as a person. ">
+					description = <"">
+				>
+				["at0063"] = <
+					text = <"18. I feel alone in the world. ">
+					description = <"">
+				>
+				["at0064"] = <
+					text = <"20. I feel generally in control of things in my life.  ">
+					description = <"">
+				>
+				["at0065"] = <
+					text = <"24.  I wish I were someone else. ">
+					description = <"">
+				>
+				["at0066"] = <
+					text = <"27. I feel inadequate. ">
+					description = <"">
+				>
+				["at0067"] = <
+					text = <"37. I feel secure about myself. ">
+					description = <"">
+				>
+				["at0068"] = <
+					text = <"41.  I have  a low opinion of myself. ">
+					description = <"">
+				>
+				["at0069"] = <
+					text = <"42. I feel that I can achieve my standards. ">
+					description = <"">
+				>
+				["at0070"] = <
+					text = <"50. I feel that I am worthwhile person. ">
+					description = <"">
+				>
+				["at0071"] = <
+					text = <"56. I feel empty inside (emotionally). ">
+					description = <"">
+				>
+				["at0073"] = <
+					text = <"6. I wish that I could be younger. ">
+					description = <"">
+				>
+				["at0074"] = <
+					text = <"14. The happiest time in life is when you are a child. ">
+					description = <"">
+				>
+				["at0075"] = <
+					text = <"22. I would rather be an adult that a child. ">
+					description = <"">
+				>
+				["at0076"] = <
+					text = <"35. The demands of adulhood are too great. ">
+					description = <"">
+				>
+				["at0077"] = <
+					text = <"39. I feel happy that I am not a child anymore. ">
+					description = <"">
+				>
+				["at0079"] = <
+					text = <"48. I feel that people are happiest when they are children. ">
+					description = <"">
+				>
+				["at0080"] = <
+					text = <"58. The best years of your life are when you become an adult. ">
+					description = <"">
+				>
+				["at0081"] = <
+					text = <"13. Only outstanding per performance is a good enough in my family. ">
+					description = <"">
+				>
+				["at0082"] = <
+					text = <"29. As a child, I tried very hard avoid disappointing my parents and teachers. ">
+					description = <"">
+				>
+				["at0083"] = <
+					text = <"36. I hate being less that best at things. ">
+					description = <"">
+				>
+				["at0084"] = <
+					text = <"43. My parents have expected excellence of me. ">
+					description = <"">
+				>
+				["at0085"] = <
+					text = <"52. I feel that I must do things perfectly or not do them at all. ">
+					description = <"">
+				>
+				["at0086"] = <
+					text = <"63. I have extremely high goals. ">
+					description = <"">
+				>
+				["at0087"] = <
+					text = <"15. I am open about my feelings. ">
+					description = <"">
+				>
+				["at0088"] = <
+					text = <"17. I trust others. ">
+					description = <"">
+				>
+				["at0089"] = <
+					text = <"23. I can communicate with others easily. ">
+					description = <"">
+				>
+				["at0090"] = <
+					text = <"30. I have close relationships. ">
+					description = <"">
+				>
+				["at0091"] = <
+					text = <"34. I have trouble expressing my emotons to others. ">
+					description = <"">
+				>
+				["at0092"] = <
+					text = <"54. I need to keep people at a certain distance (feel uncomfortable if someone tries to get too close). ">
+					description = <"">
+				>
+				["at0093"] = <
+					text = <"57. I can talk about personal thoughts or feelings. ">
+					description = <"">
+				>
+				["at0094"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0095"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0096"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0097"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0098"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0099"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0100"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0101"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0102"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0103"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0104"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0105"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0106"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0107"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0108"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0109"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0110"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0111"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0112"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0113"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0114"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0115"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0116"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0117"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0118"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0119"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0120"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0121"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0122"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0123"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0124"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0125"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0126"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0127"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0128"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0129"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0130"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0131"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0132"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0133"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0134"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0135"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0136"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0137"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0138"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0139"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0140"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0141"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0142"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0143"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0144"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0145"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0146"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0147"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0148"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0149"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0150"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0151"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0152"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0153"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0154"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0155"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0156"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0157"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0158"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0159"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0160"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0161"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0162"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0163"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0164"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0165"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0166"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0167"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0168"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0169"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0170"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0171"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0172"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0173"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0174"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0175"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0176"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0177"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0178"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0179"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0180"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0181"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0182"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0183"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0184"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0185"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0186"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0187"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0188"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0189"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0190"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0191"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0192"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0193"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0194"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0195"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0196"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0197"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0198"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0199"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0200"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0201"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0202"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0203"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0204"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0205"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0206"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0207"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0208"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0209"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0210"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0211"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0212"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0213"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0214"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0215"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0216"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0217"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0218"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0219"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0220"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0221"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0222"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0223"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0224"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0225"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0226"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0227"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0228"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0229"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0230"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0231"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0232"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0233"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0234"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0235"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0236"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0237"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0238"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0239"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0240"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0241"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0242"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0243"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0244"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0245"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0246"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0247"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0248"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0249"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0250"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0251"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0252"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0253"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0254"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0255"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0256"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0257"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0258"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0259"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0260"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0261"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0262"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0263"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0264"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0265"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0266"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0267"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0268"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0269"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0270"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0271"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0272"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0273"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0274"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0275"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0276"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0277"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0278"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0279"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0280"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0281"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0282"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0283"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0284"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0285"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0286"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0287"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0288"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0289"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0290"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0291"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0292"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0293"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0294"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0295"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0296"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0297"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0298"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0299"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0300"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0301"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0302"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0303"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0304"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0305"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0306"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0307"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0308"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0309"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0310"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0311"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0312"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0313"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0314"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0315"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0316"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0317"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0318"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0319"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0320"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0321"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0322"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0323"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0324"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0325"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0326"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0327"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0328"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0329"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0330"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0331"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0332"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0333"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0334"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0335"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0336"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0337"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0338"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0339"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0340"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0341"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0342"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0343"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0344"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0345"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0346"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0347"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0348"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0349"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0350"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0351"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0352"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0353"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0354"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0355"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0356"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0357"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0358"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0359"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0360"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0361"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0362"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0363"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0364"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0365"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0366"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0367"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0368"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0369"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0370"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0371"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0372"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0373"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0374"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0375"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0376"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0377"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0378"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0379"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0380"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0381"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0382"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0383"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0384"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0385"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0386"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0387"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0388"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0389"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0390"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0391"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0392"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0393"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0394"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0395"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0396"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0397"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0398"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0399"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0400"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0401"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0402"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0403"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0404"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0405"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0406"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0407"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0408"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0409"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0410"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0411"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0412"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0413"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0414"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0415"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0416"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0417"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0418"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0419"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0420"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0421"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0422"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0423"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0424"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0425"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0426"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0427"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0428"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0429"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0430"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0431"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0432"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0433"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0434"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0435"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0436"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0437"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0438"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0439"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0440"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0441"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0442"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0443"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0444"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0445"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0446"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0447"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0448"] = <
+					text = <"Always">
+					description = <"*">
+				>
+				["at0449"] = <
+					text = <"Usually">
+					description = <"*">
+				>
+				["at0450"] = <
+					text = <"Often">
+					description = <"*">
+				>
+				["at0451"] = <
+					text = <"Sometimes">
+					description = <"*">
+				>
+				["at0452"] = <
+					text = <"Rarely">
+					description = <"*">
+				>
+				["at0453"] = <
+					text = <"Never">
+					description = <"*">
+				>
+				["at0454"] = <
+					text = <"Total Test Score">
+					description = <"The test is similar to that of the EAT. (Always or never depending on the keyed direction) earning a score of 3, the immediately adjacent response 2 , the next response 1 and the three choices opposite to the most \"anorexic\" response receiving on score 0. ">
+				>
+			>
+		>
+	>

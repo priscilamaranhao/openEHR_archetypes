@@ -1,0 +1,243 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-INSTRUCTION.dietary_approaches_to_stop_hypertension.v0
+
+concept
+	[at0000]	-- *Dietary approaches to stop hypertension (DASH) (pt)
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhão; Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDS-FMUP">
+		["date"] = <"2017-03-13">
+	>
+	details = <
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The DASH diet can improve high blood pressure, cholesterol, and overweight. *(pt)">
+			use = <"To be used to improve blood pressure and lipid profile;
+
+To be used to lose weight;
+
+To be used in adults, elderly and children;
+
+To be used in cardiac patients. *(pt)">
+			keywords = <"Eating plan", "Diet", "Hypertension">
+			misuse = <"*(pt)">
+			copyright = <"OpenEHR Foudation *(pt)">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia, MEDCIDS-FMUP; Portugal", "Pedro Marques, MEDCIDS-FMUP; Portugal", "Duarte Ferreira, MEDCIDS-FMUP; Portugal">
+	other_details = <
+		["references"] = <"National Heart, Lung, and Blood Institute. Available in: www.nhlbi.nih.gov.
+
+Sacks, F.M; Obarzaveke, E; Windhasermm et al. Rationale and design for the dietary approaches to stop hypertension trial (DASH): a multicenter controlled-jeeding study of dietary patterns to lower blood pressure. Ann Epidemiol, 5:108-18.
+
+Costa, R.P; Gracia, C.M.; Silva, C.C.; Doenças cardiovasculares. In: Cuppari, L. Guias de Medicina ambulatorial e hospitalar da EPM-UNIFESP - Nutrição cl+inica no adulto, 3a. Edição, Barueri, SP; Ed. Manole, 2014. 
+
+">
+		["MD5-CAM-1.0.1"] = <"104A4DB84CEDBBE02DA5702994E753DB">
+	>
+
+definition
+	INSTRUCTION[at0000] matches {	-- *Dietary approaches to stop hypertension (DASH) (pt)
+		activities cardinality matches {0..*; unordered} matches {
+			ACTIVITY[at0001] occurrences matches {0..1} matches {	-- *Current Activity(pt)
+				description matches {
+					ITEM_TREE[at0002] matches {	-- Tree
+						items cardinality matches {0..*; unordered} matches {
+							CLUSTER[at0004] occurrences matches {0..1} matches {	-- Daily servings
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Grains 
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Meat, poultry and fish 
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Vegetables
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Fats and oils
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Low fat or fat free dairy products
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Fruit 
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+								}
+							}
+							CLUSTER[at0012] occurrences matches {0..1} matches {	-- Weekly servings
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Nuts, seeds, dry beans and peas
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Sweets
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dietary approaches to stop hypertension">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Current Activity">
+					description = <"Current Activity">
+				>
+				["at0002"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0006"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0008"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0009"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0010"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0012"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0013"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0014"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Dietary approaches to stop hypertension (DASH) (pt)">
+					description = <"The DASH is a balanced eating plan that helps to create a heart healthy eating. *(pt)">
+				>
+				["at0001"] = <
+					text = <"*Current Activity(pt)">
+					description = <"*Current Activity(pt)">
+				>
+				["at0002"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Daily servings">
+					description = <"Daily servings*">
+				>
+				["at0005"] = <
+					text = <"Grains ">
+					description = <"Grains are major sources of energy and fiber. e.g.: Whole-wheat bread and rolls, whole-wheat pasta, English muffin, pita bread, bagel, cereals, grits, oatmeal, brown rice, unsalted pretzels and popcorn">
+				>
+				["at0006"] = <
+					text = <"Meat, poultry and fish ">
+					description = <"Meat, poultry and fish are rich sources of protein and magnesium- e.g-: trim away visible fats; broil, roast, or poach; remove skin from poultry*">
+				>
+				["at0007"] = <
+					text = <"Vegetables">
+					description = <"Vegetables are rich sources of potassium, magnesium, and fiber. e.g.: Broccoli, carrots, collards, green beans, green peas, kale, lima beans, potatoes, spinach, squash, sweet potatoes, tomatoes*">
+				>
+				["at0008"] = <
+					text = <"Fruit ">
+					description = <"E.g.: Apples, apricots, bananas, dates, grapes, oranges, grapefruit, grapefruit juice, mangoes, melons, peaches, pineapples, raisins, strawberries, tangerines. ">
+				>
+				["at0009"] = <
+					text = <"Low fat or fat free dairy products">
+					description = <"Low fat or fat free dairy products are major sources of calcium and protein. e.g.: Fat-free milk or buttermilk; fat-free, low-fat, or reduced-fat cheese; fat-free/low-fat regular or frozen yogurt.*">
+				>
+				["at0010"] = <
+					text = <"Fats and oils">
+					description = <"Soft margarine, vegetable oil (canola, corn, olive, safflower), low-fat mayonnaise, light salad dressing*">
+				>
+				["at0012"] = <
+					text = <"Weekly servings">
+					description = <"Weekly servings*">
+				>
+				["at0013"] = <
+					text = <"Nuts, seeds, dry beans and peas">
+					description = <"Nuts, seed, etc are rich sources of energy, magnesium, protein, and fiber. e.g.: Almonds, filberts, mixed nuts, peanuts, walnuts, sunflower seeds, peanut butter, kidney beans, lentils, split peas.*">
+				>
+				["at0014"] = <
+					text = <"Sweets">
+					description = <"Sweets e.g.:Fruit-flavored gelatin, fruit punch, hard candy, jelly, maple syrup, sorbet and ices, sugar*">
+				>
+			>
+		>
+	>

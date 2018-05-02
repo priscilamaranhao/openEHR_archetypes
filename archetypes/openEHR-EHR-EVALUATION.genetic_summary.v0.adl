@@ -1,0 +1,194 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.genetic_summary.v0
+
+concept
+	[at0000]	-- Genetic summary
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhao; Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com; mail@gustavobacelar.com">
+		["organisation"] = <"MEDCIDS/FMUP; VirtualCare">
+		["date"] = <"2017-07-21">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For recording summary genetic information about the genetic details of an individual. ">
+			use = <"Use for recording summary information about the genetic details. ">
+			keywords = <"genetic", "summary", "cytogenetic", "molecular", "biochemical">
+			misuse = <"Not to be used for recording genetic test results - use specific archetype. OBSERVATION.genetic_test_results. ">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia, MEDICIDS -  FMUP, Portugal", "Pedro Vieira-Marques, MEDCIDS - FMUP, Portugal", "Duarte Ferreira, MEDCIDS - FMUP, Portugal ">
+	other_details = <
+		["references"] = <"Claustres, M.;  Kuzich, V.; Decqueke, E. et al. Recommendations  for reporting  results  of diagnostic genetic testing  (Biochemical, cytogenetic and molecular genetic). European  Journal  of Human  Genetics; 2014; 22; 160-170. 
+
+Marsolo, K.; Spooner, A.; Clinical Genomics in the world of the electronic  health record. Genetic Med. 2013; 15 (10): 786-791. ">
+		["MD5-CAM-1.0.1"] = <"3E984C2B12BC36F50C80D8DADA7D38D4">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Genetic summary
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0024] occurrences matches {0..1} matches {	-- Overall status 
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0025] occurrences matches {0..1} matches {	-- Overall description
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0026] occurrences matches {0..*} matches {	-- Overall details 
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0027] occurrences matches {0..1} matches {	-- Clinical description
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					allow_archetype CLUSTER[at0028] occurrences matches {0..*} matches {	-- Specific details
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0029] occurrences matches {0..1} matches {	-- Course description
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0030] occurrences matches {0..1} matches {*}
+					CLUSTER[at0018] occurrences matches {0..1} matches {	-- Per problem
+						items cardinality matches {1..*; unordered} matches {
+							allow_archetype CLUSTER[at0021] occurrences matches {0..*} matches {	-- Problem details 
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.family_prevalence(-[a-zA-Z0-9_]+)*\.v1/}
+							}
+							ELEMENT[at0020] occurrences matches {0..1} matches {	-- Description
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0019] occurrences matches {0..1} matches {	-- Problem/diagnosis name
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0031] occurrences matches {0..1} matches {	-- Recommendation
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0008] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0009] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+					ELEMENT[at0032] occurrences matches {0..1} matches {	-- Last update
+						value matches {
+							DV_DATE matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Genetic summary">
+					description = <"A summary of genetic information about an individual. ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Comment">
+					description = <"General comments. ">
+				>
+				["at0008"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0009"] = <
+					text = <"Extension">
+					description = <"Additional information required to capture local content or to align with other reference  models/formalisms. ">
+				>
+				["at0018"] = <
+					text = <"Per problem">
+					description = <"Details about the presence of a specific problem or diagnosis. ">
+				>
+				["at0019"] = <
+					text = <"Problem/diagnosis name">
+					description = <"identification of the problem and diagnosis by name. ">
+				>
+				["at0020"] = <
+					text = <"Description">
+					description = <"Narrative description about the problem or diagnosis">
+				>
+				["at0021"] = <
+					text = <"Problem details ">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Overall status ">
+					description = <"Statement about current genetic findings. ">
+				>
+				["at0025"] = <
+					text = <"Overall description">
+					description = <"Narrative summary about the individual´s overall genetic findings. ">
+				>
+				["at0026"] = <
+					text = <"Overall details ">
+					description = <"Addictional structured details about the overall genetic findings. ">
+				>
+				["at0027"] = <
+					text = <"Clinical description">
+					description = <"Narrative description of the problem or diagnosis. ">
+				>
+				["at0028"] = <
+					text = <"Specific details">
+					description = <"Details that are additionaly required to record as unique attibutes  of the problem/diagnosis. ">
+				>
+				["at0029"] = <
+					text = <"Course description">
+					description = <"Narrative description about the course of the problem or diagnosis since onset. ">
+				>
+				["at0030"] = <
+					text = <"Severity">
+					description = <"An assessment of the overall severity of the problem/diagnosis. ">
+				>
+				["at0031"] = <
+					text = <"Recommendation">
+					description = <"General recommendation. ">
+				>
+				["at0032"] = <
+					text = <"Last update">
+					description = <"The date this problem or diagnosis was last updated. ">
+				>
+			>
+		>
+	>

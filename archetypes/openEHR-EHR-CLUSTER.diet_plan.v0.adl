@@ -1,0 +1,461 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.diet_plan.v0
+
+concept
+	[at0000]	-- Diet plan
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhao; Gustavo Bacelar ">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDES/FMUP; VirtualCare">
+		["date"] = <"2017-07-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record information about the diet of an individual. ">
+			use = <"Use to record information about the actual diet of an individual;
+
+Use to prescribe the diet of the patient;
+
+Can be used to children and adults; 
+
+This archetype can be used in hospital, health center, etc. 
+
+">
+			keywords = <"meal", "diet", "nutrition", "food">
+			misuse = <"">
+			copyright = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia,FMUP, Portugal", "Pedro Vieira-Marques, FMUP, Portugal", "Duarte Ferreira, FMUP, Portugal">
+	other_details = <
+		["references"] = <" - Grupo de Apoio Nutricional -Equipe Multidisciplinar de Terapia Nutricional GAN/EMTN - HC - Hospital das Clínicas. Terapia Nutricional. Unicamp, 2003. Disponível em: <www.hc.unicamp.br/servicos/emtn/manual_nutricionista_2004-11-02.pdf>">
+		["MD5-CAM-1.0.1"] = <"4E8E0BF41A016458AFD2D21A4E69FE83">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Diet plan
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0002] occurrences matches {0..1} matches {	-- Number of meals
+				value matches {
+					DV_COUNT matches {*}
+				}
+			}
+			ELEMENT[at0003] occurrences matches {0..*} matches {	-- Meal hours
+				name matches {
+					DV_TEXT matches {*}
+				}
+				value matches {
+					DV_TIME matches {*}
+				}
+			}
+			ELEMENT[at0004] occurrences matches {0..1} matches {	-- Types of diets 
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0008, 	-- Atkins diet 
+							at0006, 	-- DASH - Dietary approaches to stop hypertension 
+							at0026, 	-- Dukan
+							at0029, 	-- Lacto-ovo-vegetarian 
+							at0005, 	-- Mediterranean diet 
+							at0028, 	-- Macrobiotic 
+							at0007, 	-- Paleolithic diet 
+							at0027]	-- Vegan 
+						}
+					}
+				}
+			}
+			allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Cluster
+				include
+					archetype_id/value matches {/openEHR-EHR-CLUSTER\.dietary_nutrients(-[a-zA-Z0-9_]+)*\.v0/}
+			}
+			ELEMENT[at0009] occurrences matches {0..1} matches {	-- Diet specifications 
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0010, 	-- Hypocaloric diet 
+							at0011, 	-- Hypercaloric diet 
+							at0012, 	-- Isocaloric diet
+							at0013, 	-- Hypolipidic diet 
+							at0014, 	-- Hyperlipidic diet
+							at0015, 	-- Hypoprotein diet
+							at0016]	-- Hyperprotein diet
+						}
+					}
+				}
+			}
+			ELEMENT[at0019] occurrences matches {0..1} matches {	-- Consistency diet 
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0020, 	-- Solid 
+							at0021, 	-- Soft
+							at0022, 	-- Pasty
+							at0025, 	-- Restricted liquid
+							at0024, 	-- Semi-liquid 
+							at0023]	-- Liquid 
+						}
+					}
+				}
+			}
+			ELEMENT[at0034] occurrences matches {0..1} matches {	-- Chewing velocity 
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0035, 	-- Slow
+							at0036, 	-- Normal 
+							at0037]	-- Fast
+						}
+					}
+				}
+			}
+			ELEMENT[at0039] occurrences matches {0..1} matches {	-- Change of appetite 
+				value matches {
+					DV_CODED_TEXT matches {
+						defining_code matches {
+							[local::
+							at0040, 	-- Normal 
+							at0041, 	-- Reduced
+							at0042]	-- Increased
+						}
+					}
+				}
+			}
+			ELEMENT[at0018] occurrences matches {0..1} matches {	-- Comments 
+				value matches {
+					DV_TEXT matches {*}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Diet plan">
+					description = <"unknown">
+				>
+				["at0002"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0003"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0004"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"*Mediterranean diet (pt)">
+					description = <"*Mediterranean diet is a healthy eating plan based on typical foods and recipes of mediterranean.style cooking. (pt)">
+				>
+				["at0006"] = <
+					text = <"*DASH - Dietary approaches to stop hypertension (pt)">
+					description = <"*The DASH diet is prescribe to prevent and control hypertension. (pt)">
+				>
+				["at0007"] = <
+					text = <"*Paleolithic diet (pt)">
+					description = <"*Paleolithic diet is basd mainly  on foods presume to have been available to paleolithic humans. (pt)">
+				>
+				["at0008"] = <
+					text = <"*Atkins diet (pt)">
+					description = <"*Atkins diet is a low carbohydrate diet. (pt)">
+				>
+				["at0009"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0010"] = <
+					text = <"*Hipocaloric diet (pt)">
+					description = <"*Hipocaloric diet(pt)">
+				>
+				["at0011"] = <
+					text = <"*Hipercaloric diet (pt)">
+					description = <"*Hipercaloric diet (pt)">
+				>
+				["at0012"] = <
+					text = <"*Isocaloric diet(pt)">
+					description = <"*Isocaloric diet(pt)">
+				>
+				["at0013"] = <
+					text = <"*Hipolipidic diet (pt)">
+					description = <"*Hipolipidic diet(pt)">
+				>
+				["at0014"] = <
+					text = <"*Hiperlipidic diet(pt)">
+					description = <"*Hiperlipidic diet(pt)">
+				>
+				["at0015"] = <
+					text = <"*Hypoprotein diet(pt)">
+					description = <"*Hypoprotein diet(pt)">
+				>
+				["at0016"] = <
+					text = <"*Hiperprotein diet(pt)">
+					description = <"*Hiperprotein diet(pt)">
+				>
+				["at0017"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0018"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0019"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0020"] = <
+					text = <"*Liquid(pt)">
+					description = <"*liquid consistency(pt)">
+				>
+				["at0021"] = <
+					text = <"*Soft(pt)">
+					description = <"*Soft consistency(pt)">
+				>
+				["at0022"] = <
+					text = <"*Pasty(pt)">
+					description = <"*Pasty consistency(pt)">
+				>
+				["at0023"] = <
+					text = <"*Liquid (pt)">
+					description = <"*Liquid consistency(pt)">
+				>
+				["at0024"] = <
+					text = <"*Semi-liquid (pt)">
+					description = <"*semi-liquid consistency(pt)">
+				>
+				["at0025"] = <
+					text = <"*Liquid restricted(pt)">
+					description = <"*Liquid restricted consistency(pt)">
+				>
+				["at0026"] = <
+					text = <"*Dukan(pt)">
+					description = <"*Dukan diet is a protein-based diet. (pt)">
+				>
+				["at0027"] = <
+					text = <"*Vegan (pt)">
+					description = <"*Vegan diet (pt)">
+				>
+				["at0028"] = <
+					text = <"*Macrobiotic (pt)">
+					description = <"*Macrobiotic diet (pt)">
+				>
+				["at0029"] = <
+					text = <"*Lacto-ovo-vegetarian (pt)">
+					description = <"*Lacto-ovo-vegetarian diet(pt)">
+				>
+				["at0034"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0035"] = <
+					text = <"*slow(pt)">
+					description = <"*slow velocity(pt)">
+				>
+				["at0036"] = <
+					text = <"*Normal (pt)">
+					description = <"*normal velocity (pt)">
+				>
+				["at0037"] = <
+					text = <"*Fast(pt)">
+					description = <"*Fast velocity(pt)">
+				>
+				["at0039"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0040"] = <
+					text = <"*Normal (pt)">
+					description = <"*Normal appetite (pt)">
+				>
+				["at0041"] = <
+					text = <"*Reduced(pt)">
+					description = <"*Reduced appetite (pt)">
+				>
+				["at0042"] = <
+					text = <"*Increased(pt)">
+					description = <"*Increased appetite (pt)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Diet plan">
+					description = <"Specific information about the diet of an individual. ">
+				>
+				["at0002"] = <
+					text = <"Number of meals">
+					description = <"Number of meals per day.">
+				>
+				["at0003"] = <
+					text = <"Meal hours">
+					description = <"Meal hours. ">
+				>
+				["at0004"] = <
+					text = <"Types of diets ">
+					description = <"Types of diets.">
+				>
+				["at0005"] = <
+					text = <"Mediterranean diet ">
+					description = <"Mediterranean diet is a healthy eating plan based on typical foods and recipes of mediterranean.style cooking. ">
+				>
+				["at0006"] = <
+					text = <"DASH - Dietary approaches to stop hypertension ">
+					description = <"The DASH diet is prescribe to prevent and control hypertension. ">
+				>
+				["at0007"] = <
+					text = <"Paleolithic diet ">
+					description = <"Paleolithic diet is basd mainly  on foods presume to have been available to paleolithic humans. ">
+				>
+				["at0008"] = <
+					text = <"Atkins diet ">
+					description = <"Atkins diet is a low carbohydrate diet. ">
+				>
+				["at0009"] = <
+					text = <"Diet specifications ">
+					description = <"Diet specifications. ">
+				>
+				["at0010"] = <
+					text = <"Hypocaloric diet ">
+					description = <"Hypocaloric diet">
+				>
+				["at0011"] = <
+					text = <"Hypercaloric diet ">
+					description = <"Hypercaloric diet ">
+				>
+				["at0012"] = <
+					text = <"Isocaloric diet">
+					description = <"Isocaloric diet">
+				>
+				["at0013"] = <
+					text = <"Hypolipidic diet ">
+					description = <"Hypolipidic diet">
+				>
+				["at0014"] = <
+					text = <"Hyperlipidic diet">
+					description = <"Hyperlipidic diet">
+				>
+				["at0015"] = <
+					text = <"Hypoprotein diet">
+					description = <"Hypoprotein diet">
+				>
+				["at0016"] = <
+					text = <"Hyperprotein diet">
+					description = <"Hyiperprotein diet">
+				>
+				["at0017"] = <
+					text = <"Cluster">
+					description = <"Dietary nutrients ">
+				>
+				["at0018"] = <
+					text = <"Comments ">
+					description = <"Comments ">
+				>
+				["at0019"] = <
+					text = <"Consistency diet ">
+					description = <"Consistency diet.">
+				>
+				["at0020"] = <
+					text = <"Solid ">
+					description = <"Solid consistency">
+				>
+				["at0021"] = <
+					text = <"Soft">
+					description = <"Soft consistency">
+				>
+				["at0022"] = <
+					text = <"Pasty">
+					description = <"Pasty consistency">
+				>
+				["at0023"] = <
+					text = <"Liquid ">
+					description = <"Liquid consistency">
+				>
+				["at0024"] = <
+					text = <"Semi-liquid ">
+					description = <"semi-liquid consistency">
+				>
+				["at0025"] = <
+					text = <"Restricted liquid">
+					description = <"Liquid restricted consistency">
+				>
+				["at0026"] = <
+					text = <"Dukan">
+					description = <"Dukan diet is a protein-based diet. ">
+				>
+				["at0027"] = <
+					text = <"Vegan ">
+					description = <"Vegan diet ">
+				>
+				["at0028"] = <
+					text = <"Macrobiotic ">
+					description = <"Macrobiotic diet ">
+				>
+				["at0029"] = <
+					text = <"Lacto-ovo-vegetarian ">
+					description = <"Lacto-ovo-vegetarian diet">
+				>
+				["at0034"] = <
+					text = <"Chewing velocity ">
+					description = <"Chewing velocity.">
+				>
+				["at0035"] = <
+					text = <"Slow">
+					description = <"slow velocity">
+				>
+				["at0036"] = <
+					text = <"Normal ">
+					description = <"normal velocity ">
+				>
+				["at0037"] = <
+					text = <"Fast">
+					description = <"Fast velocity">
+				>
+				["at0039"] = <
+					text = <"Change of appetite ">
+					description = <"Change of appetite.">
+				>
+				["at0040"] = <
+					text = <"Normal ">
+					description = <"Normal appetite ">
+				>
+				["at0041"] = <
+					text = <"Reduced">
+					description = <"Reduced appetite ">
+				>
+				["at0042"] = <
+					text = <"Increased">
+					description = <"Increased appetite ">
+				>
+			>
+		>
+	>

@@ -1,0 +1,658 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-INSTRUCTION.enteral_nutrition.v0
+
+concept
+	[at0000]	-- Enteral nutrition
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhão; Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDS-FMUP">
+		["date"] = <"2017-03-08">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"When the oral via can not be used, enteral nutrition must be requested. ">
+			use = <"To be used to request a specific nutrition support;
+
+To be used to enteral via feeding (nasogastric or nasoenteric);
+
+To be used when oral  intake is inappropriate;
+
+To be used to children and adults;
+
+Can be used after surgery. 
+
+To be used if there is malnutrition risk. 
+
+To be used in patients that can not intake food e.g.: anorexia, oral injury, etc.
+
+To be used in patients that food intake can cause pain and discomfort;
+
+To be used in patients with gastrointestinal dysfunction. ">
+			keywords = <"Nutrition therapy", "Standard therapy", "Nutrition support">
+			misuse = <"Not to be used if there is not intestinal integrity mucose. 
+
+Not to be used when the oral intake  is appropriate;
+
+Not to be used in diarrhea, vomiting, etc. ">
+			copyright = <"OpenEHR Foundation">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia, MEDCIDS-FMUP; Portugal ", "Pedro Marques, MEDCIDS-FMUP; Portugal", "Duarte Ferreira, MEDCIDS-FMUP; Portugal">
+	other_details = <
+		["references"] = <"Resolução RCD, n.3 Agencia Nacional de Vigilância Sanitaria (ANVISA) do Ministério da Saúde, 6 de julho de 2000, Brasil.
+
+Vasconcelos, M.I.L. Nutrição Enteral. In: Cuppari, L. Guias de Medicina ambulatorial e hospitalar, EPM - UNIFESP - Nutrição Cl+inica do adulto. 3. edição, Barueri, SP. Ed. Manole, 2014. 
+
+Ana Paula Lança Bento, Rosa Wanda Diez Garcia, Alceu Afonso Jordºao Junior. Manual do paciente em terapia nutricional enteral dominciliar. Disponível em: http://www.google.com.br/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiviM3ysqbUAhWML8AKHcxJDBoQFggiMAA&url=http%3A%2F%2Fecos-redenutri.bvs.br%2Ftiki-download_file.php%3FfileId%3D899&usg=AFQjCNEdUlEl2W9OQNifBV7Sa6e5MofO0A&sig2=u97ey2kbXO126yrP8yMZEg. 
+">
+		["MD5-CAM-1.0.1"] = <"52D15FEE57C0F04BD24D7257D5C53768">
+	>
+
+definition
+	INSTRUCTION[at0000] matches {	-- Enteral nutrition
+		activities cardinality matches {0..*; unordered} matches {
+			ACTIVITY[at0001] occurrences matches {0..1} matches {	-- Current Activity
+				description matches {
+					ITEM_TREE[at0002] matches {	-- Tree
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0003] occurrences matches {0..1} matches {	-- Description of enteral nutrition administration
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {[local::]}
+									}
+								}
+							}
+							ELEMENT[at0004] occurrences matches {0..1} matches {	-- Proposed procedure
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0005] occurrences matches {0..1} matches {	-- Reason for request
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0006] occurrences matches {0..1} matches {	-- The technique of administration
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0018, 	-- Continuous
+											at0019, 	-- Intermittent
+											at0022]	-- Bolus
+										}
+									}
+								}
+							}
+							ELEMENT[at0025] occurrences matches {0..1} matches {	-- Osmolarity
+								value matches {
+									C_DV_QUANTITY <
+										property = <[openehr::118]>
+									>
+								}
+							}
+							allow_archetype CLUSTER[at0036] occurrences matches {0..*} matches {	-- Cluster
+								include
+									archetype_id/value matches {/openEHR-EHR-CLUSTER\.macronutrients(-[a-zA-Z0-9_]+)*\.v0 (2)|openEHR-EHR-CLUSTER\.micronutrients(-[a-zA-Z0-9_]+)*\.v0/}
+							}
+							CLUSTER[at0080] occurrences matches {0..1} matches {	-- Type of diet 
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0082] occurrences matches {0..1} matches {	-- Homemade
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0081] occurrences matches {0..1} matches {	-- Industrialized
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0083, 	-- Powered diet 
+													at0084]	-- Liquid diet 
+												}
+											}
+										}
+									}
+								}
+							}
+							ELEMENT[at0029] occurrences matches {0..1} matches {	-- Formula specifications 
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0058] occurrences matches {0..1} matches {	-- Enteral diet classification 
+								value matches {
+									DV_CODED_TEXT matches {
+										defining_code matches {
+											[local::
+											at0059, 	-- Elemental or monomeric 
+											at0060, 	-- Oligomeric 
+											at0061, 	-- Polymeric 
+											at0062, 	-- Special diet
+											at0063]	-- Diet in modules
+										}
+									}
+								}
+							}
+							CLUSTER[at0066] occurrences matches {0..1} matches {	-- Specific elements
+								items cardinality matches {1..*; unordered} matches {
+									ELEMENT[at0070] occurrences matches {0..1} matches {	-- Fiber 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0071, 	-- Fiber 
+													at0072]	-- Free fiber 
+												}
+											}
+										}
+									}
+									ELEMENT[at0067] occurrences matches {0..1} matches {	-- Lactose
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0068, 	-- Lactose
+													at0069]	-- Free lactose
+												}
+											}
+										}
+									}
+								}
+							}
+							ELEMENT[at0030] occurrences matches {0..1} matches {	-- Homemade specifications 
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0032] occurrences matches {0..1} matches {	-- Infusion time 
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0035] occurrences matches {0..1} matches {	-- Total volume 
+								value matches {
+									C_DV_QUANTITY <
+										property = <[openehr::129]>
+										list = <
+											["1"] = <
+												units = <"ml">
+											>
+											["2"] = <
+												units = <"l">
+											>
+										>
+									>
+								}
+							}
+							ELEMENT[at0033] occurrences matches {0..1} matches {	-- Number of diets/day
+								value matches {
+									C_DV_QUANTITY <
+										property = <[openehr::118]>
+									>
+								}
+							}
+							ELEMENT[at0073] occurrences matches {0..1} matches {	-- Caloric density
+								value matches {
+									C_DV_QUANTITY <
+										property = <[openehr::129]>
+										list = <
+											["1"] = <
+												units = <"ml">
+											>
+										>
+									>
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0007] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Access techniques
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0016, 	-- Blind 
+									at0017]	-- Endoscopy
+								}
+							}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Probe size
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Probe position 
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0011, 	-- Nasogastric
+									at0012, 	-- Nasoduodenal 
+									at0013, 	-- Nasojejunal
+									at0014, 	-- Gastrostomy
+									at0015]	-- Jejunostomy
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Enteral nutrition">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Current Activity">
+					description = <"Current Activity">
+				>
+				["at0002"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0003"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0004"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0006"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0008"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0009"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0010"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0011"] = <
+					text = <"*Nasogastric(pt)">
+					description = <"*Nasogastric probe position(pt)">
+				>
+				["at0012"] = <
+					text = <"*Nasoduodenal (pt)">
+					description = <"*Nasoduodenal position(pt)">
+				>
+				["at0013"] = <
+					text = <"*Nasojejunal(pt)">
+					description = <"*Nasojejunal position(pt)">
+				>
+				["at0014"] = <
+					text = <"*Gastrostomy(pt)">
+					description = <"*Gastrostomy position(pt)">
+				>
+				["at0015"] = <
+					text = <"*Jejunostomy(pt)">
+					description = <"*Jejunostomy position.(pt)">
+				>
+				["at0016"] = <
+					text = <"*Blind (pt)">
+					description = <"**(pt)">
+				>
+				["at0017"] = <
+					text = <"*Endoscopy(pt)">
+					description = <"**(pt)">
+				>
+				["at0018"] = <
+					text = <"*Continued(pt)">
+					description = <"**(pt)">
+				>
+				["at0019"] = <
+					text = <"*Intermitted(pt)">
+					description = <"**(pt)">
+				>
+				["at0022"] = <
+					text = <"*Bolo(pt)">
+					description = <"**(pt)">
+				>
+				["at0025"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0029"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0030"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0032"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0033"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0035"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0036"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0058"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0059"] = <
+					text = <"*Elemental or monomeric (pt)">
+					description = <"*aminoacids, glucose, lipids, vitamins and minerals (pt)">
+				>
+				["at0060"] = <
+					text = <"*Oligomeric (pt)">
+					description = <"*Enzymatic nydrolyze of protein, high osmolarity, high intestinal absorption. (pt)">
+				>
+				["at0061"] = <
+					text = <"*Polymeric (pt)">
+					description = <"*Nutrients intact, with or without lactose, low osmolarity, lower cost, hyperprotein, hypercaloric supplemented with fiber, etc, (pt)">
+				>
+				["at0062"] = <
+					text = <"*Special diet(pt)">
+					description = <"*specific formulations to meet the differentiated nutritional needs according to the underlying disease. (pt)">
+				>
+				["at0063"] = <
+					text = <"*Diet in modules(pt)">
+					description = <"*Predominance of one of the nutrients (lipids or protein or carbohydrate)(pt)">
+				>
+				["at0066"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0067"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0068"] = <
+					text = <"*Lactose(pt)">
+					description = <"*enteral formula with lactose. (pt)">
+				>
+				["at0069"] = <
+					text = <"*Free lactose(pt)">
+					description = <"*Enteral formula without lactose. (pt)">
+				>
+				["at0070"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0071"] = <
+					text = <"*Fiber (pt)">
+					description = <"*Enteral formula with fiber (pt)">
+				>
+				["at0072"] = <
+					text = <"*Frre fiber (pt)">
+					description = <"*Enteral formula without fiber. (pt)">
+				>
+				["at0073"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0080"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0081"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0082"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0083"] = <
+					text = <"*Powered diet (pt)">
+					description = <"**(pt)">
+				>
+				["at0084"] = <
+					text = <"*Liquid diet (pt)">
+					description = <"* liquid diet (Bottle or feeding bag) (pt)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Enteral nutrition">
+					description = <"Specific request to nutrition therapy. ">
+				>
+				["at0001"] = <
+					text = <"Current Activity">
+					description = <"Current Activity">
+				>
+				["at0002"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Description of enteral nutrition administration">
+					description = <"A detailed narrative description of the nutrition support request. ">
+				>
+				["at0004"] = <
+					text = <"Proposed procedure">
+					description = <"Identification of the proposed procedure, including correct site and position.">
+				>
+				["at0005"] = <
+					text = <"Reason for request">
+					description = <"A short phrase describing the reason for the request. ">
+				>
+				["at0006"] = <
+					text = <"The technique of administration">
+					description = <"Narrative description of the administration methods, e.g.: continuous, intermittent, etc. ">
+				>
+				["at0007"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Access techniques">
+					description = <"Access techniques to enteral nutrition, e.g.: blind or endoscopy. 
+">
+				>
+				["at0009"] = <
+					text = <"Probe size">
+					description = <"Identification of enteral nutrition probe, e.g.: caliber 8 fr or caliber 10 fr">
+				>
+				["at0010"] = <
+					text = <"Probe position ">
+					description = <"Probe position in enteral nutrition, e.g.: nasogastric, nasoduodenal, nasojejunal, gastrostomy, jejunostomy. ">
+				>
+				["at0011"] = <
+					text = <"Nasogastric">
+					description = <"Nasogastric position">
+				>
+				["at0012"] = <
+					text = <"Nasoduodenal ">
+					description = <"Nasoduodenal position">
+				>
+				["at0013"] = <
+					text = <"Nasojejunal">
+					description = <"Nasojejunal position">
+				>
+				["at0014"] = <
+					text = <"Gastrostomy">
+					description = <"Gastrostomy position">
+				>
+				["at0015"] = <
+					text = <"Jejunostomy">
+					description = <"Jejunostomy position.">
+				>
+				["at0016"] = <
+					text = <"Blind ">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Endoscopy">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Continuous">
+					description = <"50 to 150 ml/h">
+				>
+				["at0019"] = <
+					text = <"Intermittent">
+					description = <"Up to 500 ml  every 3 to 6 h. ">
+				>
+				["at0022"] = <
+					text = <"Bolus">
+					description = <"Infusion of up to 500 ml of enteral formula into the stomach over 5 to 20 minutes, usually by gravity or with a largebore syringe. ">
+				>
+				["at0025"] = <
+					text = <"Osmolarity">
+					description = <"It is the number of particles dissolved in the solution. The diets can be classified in: Isotonic < ou = 350 mOm/L; Moderately hyipertonic (350 a 450 mOm/L);  Hypertonic > ou = a 550 mOm/L. ">
+				>
+				["at0029"] = <
+					text = <"Formula specifications ">
+					description = <"To be used to industrialized diet. (e.g.: Feeding bags - 4 spoons of can formula; 30 ml of water). ">
+				>
+				["at0030"] = <
+					text = <"Homemade specifications ">
+					description = <"Ingredients and amount  to prepare of homemade enteral nutrition (e.g: 1 spoon of rice, 3 spoons of sugar, etc). ">
+				>
+				["at0032"] = <
+					text = <"Infusion time ">
+					description = <"Infusion time (e.g: 3 to 3 h). ">
+				>
+				["at0033"] = <
+					text = <"Number of diets/day">
+					description = <"Number of prescribes diets. (e.g.: 6 diets/day)">
+				>
+				["at0035"] = <
+					text = <"Total volume ">
+					description = <"Volume of diet /day ">
+				>
+				["at0036"] = <
+					text = <"Cluster">
+					description = <"Macronutrients and Micronutrients  prescription ">
+				>
+				["at0058"] = <
+					text = <"Enteral diet classification ">
+					description = <"enteral diet classification ">
+				>
+				["at0059"] = <
+					text = <"Elemental or monomeric ">
+					description = <"formula without waste, nutrients in simple form (amino acids, glucose, etc). ">
+				>
+				["at0060"] = <
+					text = <"Oligomeric ">
+					description = <"Enzymatic nydrolyze of protein, high osmolarity, high intestinal absorption. ">
+				>
+				["at0061"] = <
+					text = <"Polymeric ">
+					description = <"Nutrients intact, with or without lactose, low osmolarity, lower cost, hyperprotein, hypercaloric supplemented with fiber, etc, ">
+				>
+				["at0062"] = <
+					text = <"Special diet">
+					description = <"specific formulations to meet the differentiated nutritional needs according to the underlying disease (e.g: diabetes, respiratory insufficency). ">
+				>
+				["at0063"] = <
+					text = <"Diet in modules">
+					description = <"Predominance of one of the nutrients (lipids or protein or carbohydrate)">
+				>
+				["at0066"] = <
+					text = <"Specific elements">
+					description = <"Elements specifics in enteral nutrition formula. ">
+				>
+				["at0067"] = <
+					text = <"Lactose">
+					description = <"The presence of lactose. ">
+				>
+				["at0068"] = <
+					text = <"Lactose">
+					description = <"enteral formula with lactose. ">
+				>
+				["at0069"] = <
+					text = <"Free lactose">
+					description = <"Enteral formula without lactose. ">
+				>
+				["at0070"] = <
+					text = <"Fiber ">
+					description = <"The presence of fiber. ">
+				>
+				["at0071"] = <
+					text = <"Fiber ">
+					description = <"Enteral formula with fiber ">
+				>
+				["at0072"] = <
+					text = <"Free fiber ">
+					description = <"Enteral formula without fiber. ">
+				>
+				["at0073"] = <
+					text = <"Caloric density">
+					description = <"Caloric Density ">
+				>
+				["at0080"] = <
+					text = <"Type of diet ">
+					description = <"*">
+				>
+				["at0081"] = <
+					text = <"Industrialized">
+					description = <"The enteral nutrition can be industrialized or homemade. ">
+				>
+				["at0082"] = <
+					text = <"Homemade">
+					description = <"The preparation is done at home, with foods commonly used in feeding the family. ">
+				>
+				["at0083"] = <
+					text = <"Powered diet ">
+					description = <"Can and sachet">
+				>
+				["at0084"] = <
+					text = <"Liquid diet ">
+					description = <" liquid diet (Bottle or feeding bag) ">
+				>
+			>
+		>
+	>

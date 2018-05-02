@@ -1,0 +1,214 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.atherogenic_index_of_plasma.v0
+
+concept
+	[at0000]	-- Atherogenic index of plasma 
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhao; Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDES/FMUP; VirtualCare">
+		["date"] = <"2017-07-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the atherogenic index of  plasma of an individual. ">
+			use = <"Use to record the atherogenic index of plasma. ">
+			keywords = <"AIP", "athrogenic", "cardiovascular", "plasma", "lipids">
+			misuse = <"Not to be used  to record the triglycerides or HDL-cholesterol. Use the appropriate  archetype OBSERVATION.lipid_studies_test_results. ">
+			copyright = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia, FMUP, Portugal", "Pedro Vieira-Marques, FMUP, Portugal ", "Duarte Ferreira, FMUP, Portugal ">
+	other_details = <
+		["references"] = <"- Lima WA, Glaner MF. Principais fatores de risco relacionados às doenças cardiovasculares. Revista Brasileira de Cineantropometria & Desempenho Humano, 8(1):96-104, 2006. 
+
+- Dobiásová, M. Atherogenic index of plasma [log(triglycerides/HDL-cholesterol)] Theorical and practical implications. Clinical chemistry, 50, issue 7; 2004. 
+
+- Orsatti FL, Nahas EAP, Nahas-Neto J, Maestá N, Padoani NP, Orsatti CL. Indicadores antropométricos e as doenças cronicas nao transmissíveis em mulheres na pós-menopuasa da regiao sudeste do Brasil. Rev Bras Ginecol Obstet, 30(4):182-9, 2008. ">
+		["MD5-CAM-1.0.1"] = <"C943F64B9C612A5926921EEBFE1957C2">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Atherogenic index of plasma 
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Atherogenic index of plasma
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0005] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Confounding factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0007] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Method
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0009, 	-- Automatic entry
+									at0010]	-- Direct entry
+								}
+							}
+						}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Formula
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Atherogenic index">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0006"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0008"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0009"] = <
+					text = <"*Automatic entry(pt)">
+					description = <"*AIP calculated and entered automatically without user intervention. (pt)">
+				>
+				["at0010"] = <
+					text = <"*Direct entry(pt)">
+					description = <"*AIP calculated and entered directly by user. (pt)">
+				>
+				["at0011"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Atherogenic index of plasma ">
+					description = <"Calculation to assess the atherogenic index of plasma (AIP). ">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Atherogenic index of plasma">
+					description = <"Atherogenic index of plasma. ">
+				>
+				["at0005"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Confounding factors">
+					description = <"Narrative  of any issues  or factors that may impact on the calculation. (e.g: TG was measurement in mg/dL and was converted to mmol/l.)">
+				>
+				["at0007"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Method">
+					description = <"The method of entering the AIP. ">
+				>
+				["at0009"] = <
+					text = <"Automatic entry">
+					description = <"AIP calculated and entered automatically without user intervention. ">
+				>
+				["at0010"] = <
+					text = <"Direct entry">
+					description = <"AIP calculated and entered directly by user. ">
+				>
+				["at0011"] = <
+					text = <"Formula">
+					description = <"Formula used to derive the AIP.  log (TG, mmol/L/HDL-c,mmol/L)">
+				>
+			>
+		>
+	>

@@ -1,0 +1,597 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.binge_eating_scale__bes.v0
+
+concept
+	[at0000]	-- Binge eating scale  (BES)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhao, Gustavo Bacelar ">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDS/FMUP; VirtualCare">
+		["date"] = <"2018-04-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The purpose of the Binge Eating Scale (BES) is to identify binge eating severity. ">
+			use = <"To be used  in adolescents and adults; 
+
+To be used to identify the bing eating severity; 
+
+To be used as self-report instrument. 
+
+To be used in English language. ">
+			keywords = <"BES", "Binge eating ", "Eating disorders">
+			misuse = <"Not to be used to eating disorders diagnosis. ">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia, MEDCIDS-FMUP, Portugal", "Pedro Vieira-Marques, MEDCIDS-FMUP, Portugal", "Duarte Nuno Gonçalves-Ferreira, MEDCIDS-FMUP, Portugal">
+	other_details = <
+		["references"] = <"Gormally, J; Black, S, Daston, S and Rardin, D. The assessment of binge eating severity among obese persons. Addict Behav, 1982; 7(1): 47-55. 
+">
+		["MD5-CAM-1.0.1"] = <"55C351C29CB198AEF2EB8DDFE48B70E6">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Binge eating scale  (BES)
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- #1
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0007, 	-- 1
+													at0008, 	-- 2
+													at0009, 	-- 3
+													at0010]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- #2
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0012, 	-- 1
+													at0013, 	-- 2
+													at0014, 	-- 3
+													at0015]	-- 4.
+												}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- #3
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0017, 	-- 1
+													at0018, 	-- 2
+													at0019, 	-- 3
+													at0020]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- #4
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0022, 	-- 1
+													at0023, 	-- 2
+													at0024, 	-- 3
+													at0025]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- #5
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0027, 	-- 1
+													at0028, 	-- 2
+													at0029, 	-- 3
+													at0030]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0031] occurrences matches {0..1} matches {	-- #6
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0032, 	-- 1
+													at0033, 	-- 2
+													at0034]	-- 3
+												}
+											}
+										}
+									}
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- #7
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0036, 	-- 1
+													at0037, 	-- 2
+													at0038, 	-- 3
+													at0039]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0040] occurrences matches {0..1} matches {	-- #8
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0041, 	-- 1
+													at0042, 	-- 2
+													at0043, 	-- 3
+													at0044]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0045] occurrences matches {0..1} matches {	-- #9
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0046, 	-- 1
+													at0047, 	-- 2
+													at0048, 	-- 3
+													at0049]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0050] occurrences matches {0..1} matches {	-- #10
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0051, 	-- 1
+													at0052, 	-- 2
+													at0053, 	-- 3
+													at0054]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0055] occurrences matches {0..1} matches {	-- #11
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0056, 	-- 1
+													at0057, 	-- 2
+													at0058, 	-- 3
+													at0059]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0060] occurrences matches {0..1} matches {	-- #12
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0061, 	-- 1
+													at0062, 	-- 2
+													at0063, 	-- 3
+													at0064]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0065] occurrences matches {0..1} matches {	-- #13
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0066, 	-- 1
+													at0067, 	-- 2
+													at0068, 	-- 3
+													at0069]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0070] occurrences matches {0..1} matches {	-- #14
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0071, 	-- 1
+													at0072, 	-- 2
+													at0073, 	-- 3
+													at0074]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0075] occurrences matches {0..1} matches {	-- #15
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0076, 	-- 1
+													at0077, 	-- 2
+													at0078, 	-- 3
+													at0079]	-- 4
+												}
+											}
+										}
+									}
+									ELEMENT[at0080] occurrences matches {0..1} matches {	-- #16
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0081, 	-- 1
+													at0082, 	-- 2
+													at0083]	-- 3
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Binge eating scale  (BES)">
+					description = <"Screening to binge eating. ">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Any event. ">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"#1">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0007"] = <
+					text = <"1">
+					description = <"I don´t feel self-conscious about my weight or body size when I´m with others. ">
+				>
+				["at0008"] = <
+					text = <"2">
+					description = <"I feel concerned about how I look to others, but it normally does not make me feel disappointed with myself. ">
+				>
+				["at0009"] = <
+					text = <"3">
+					description = <"I do get self-conscious about my appearance and weight which makes me feel disappointed in myself. ">
+				>
+				["at0010"] = <
+					text = <"4">
+					description = <"I feel very self-conscious about my weight and frequently, I feel intense shame and disgust for myself. I try to avoid social contacts because of my self-consciousness. ">
+				>
+				["at0011"] = <
+					text = <"#2">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0012"] = <
+					text = <"1">
+					description = <"I dont have any difficulty eating slowly in the proper manner. ">
+				>
+				["at0013"] = <
+					text = <"2">
+					description = <"Although I seem to \"gobble down\" foods, I don´t end up feeling stuffed because of eating too much. ">
+				>
+				["at0014"] = <
+					text = <"3">
+					description = <"At times, I tend to eat quickly and thenm I feel unconfortably full afterwards.">
+				>
+				["at0015"] = <
+					text = <"4.">
+					description = <"I have the habit of bolting down my food, withou really chwing it. When this happens I usually feel uncomfortably stuffed because I´ve eaten too much. ">
+				>
+				["at0016"] = <
+					text = <"#3">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0017"] = <
+					text = <"1">
+					description = <"I feel capable to control my eating urges when I want to.">
+				>
+				["at0018"] = <
+					text = <"2">
+					description = <"I feel like I have failed to control my eating more than the average person. ">
+				>
+				["at0019"] = <
+					text = <"3">
+					description = <"I feel utterly helpless when it comes to feeling in control of my eating urges. ">
+				>
+				["at0020"] = <
+					text = <"4">
+					description = <"Because I feel so helpless about controlling my eating I have become very desperate about trying to get in control. ">
+				>
+				["at0021"] = <
+					text = <"#4">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0022"] = <
+					text = <"1">
+					description = <" don´t have the habit of eating when I´m bored. ">
+				>
+				["at0023"] = <
+					text = <"2">
+					description = <"I sometimes eat when I´m bored, but often I´m able to \"get busy\" and get my mind off food. ">
+				>
+				["at0024"] = <
+					text = <"3">
+					description = <"I have a regular habit of eating when I´m bored, but occasionally, I can use some other activity to get my mind off eating">
+				>
+				["at0025"] = <
+					text = <"4">
+					description = <"I have a strong habt of eating when I´m bored. Nothing seems to help me break the habit. ">
+				>
+				["at0026"] = <
+					text = <"#5">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0027"] = <
+					text = <"1">
+					description = <"I´m usually physically hungry when I eat something. ">
+				>
+				["at0028"] = <
+					text = <"2">
+					description = <"Occacionally, I eat something on impulse even though I really am not hungry. ">
+				>
+				["at0029"] = <
+					text = <"3">
+					description = <"I have the regular habit of eating foods, that I might not really enjoy, to satisfy a hungry feeling even though physically, I don´t need the food. ">
+				>
+				["at0030"] = <
+					text = <"4">
+					description = <"Even Though I´m not physically hungry, I get a hungry feeling in my mouth that only seems to be satisfied when I eat a food, like a sandwich, that fills my mouth. Sometimes, when I eat the food to satisfaty my mouth hunger, I then spit the food out so I won´t gain weight. ">
+				>
+				["at0031"] = <
+					text = <"#6">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0032"] = <
+					text = <"1">
+					description = <"I don´t feel any guilt or self-hate after I overeat.">
+				>
+				["at0033"] = <
+					text = <"2">
+					description = <"After I overeat, occasionally I feel guilt or self-hate. ">
+				>
+				["at0034"] = <
+					text = <"3">
+					description = <"Almost all the time I experience strong guilt or self-hate after I overeat. ">
+				>
+				["at0035"] = <
+					text = <"#7">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0036"] = <
+					text = <"1">
+					description = <"I don´t lose total control of my eating when dieting even after periods when I overeat.">
+				>
+				["at0037"] = <
+					text = <"2">
+					description = <"Sometimes when I eat a \"forbidden food\" on a diet, I feel like I \"blew it\" and eat even more.">
+				>
+				["at0038"] = <
+					text = <"3">
+					description = <"Frequently, I have the habit of saying to myself, \"I´ve blown it now, why not go all the way\" when I overeat on a diet. When that happens I eat even more. ">
+				>
+				["at0039"] = <
+					text = <"4">
+					description = <"I have a regular habit of staring strict diets for myself, but I break the diets by going on an eating binge. My life seems to be either a \"feast\" or \"famine\". ">
+				>
+				["at0040"] = <
+					text = <"#8">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0041"] = <
+					text = <"1">
+					description = <"I rarely eat so much food that I feel uncomfortably stuffed afterwards.">
+				>
+				["at0042"] = <
+					text = <"2">
+					description = <"Usually about once a month, I eat such a quatity of food, I end up feeling very stuffed. ">
+				>
+				["at0043"] = <
+					text = <"3">
+					description = <"I have regular periods during the month when I eat large amounts of food, either at mealtime or at snacks.">
+				>
+				["at0044"] = <
+					text = <"4">
+					description = <"I eat so much food that I regularly feel quite uncomfortable after eating and sometimes a bit nauseous.">
+				>
+				["at0045"] = <
+					text = <"#9">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0046"] = <
+					text = <"1">
+					description = <"My level of calorie intake does not go up very high or go down very low on a regular basis.">
+				>
+				["at0047"] = <
+					text = <"2">
+					description = <"Sometimes after I overeat, I will try to reduce my caloric intake to almost nothing to compensate for the excess calories I´ve eaten. ">
+				>
+				["at0048"] = <
+					text = <"3">
+					description = <"I have a regular habit of overating during the night. It seems that my routine is not to be hungry in the morning but overeat in the evening. ">
+				>
+				["at0049"] = <
+					text = <"4">
+					description = <"In my adult years, I have had week-long periods where I practically starve myself. This follows periods when I overeat. It seems I live a life of either \"feast or famine\"">
+				>
+				["at0050"] = <
+					text = <"#10">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0051"] = <
+					text = <"1">
+					description = <"I usually am able to stop eating when I want to. I know when \"enough is enough\".">
+				>
+				["at0052"] = <
+					text = <"2">
+					description = <"Every so often, I experience a compulsion to eat which I can´t seem to control. ">
+				>
+				["at0053"] = <
+					text = <"3">
+					description = <"Frequently, I experience a compulsion to eat which I can´t seem to control, but  at other times I can control y eating urges. ">
+				>
+				["at0054"] = <
+					text = <"4">
+					description = <"I feel incapable of controlling urges to eat. I have a fear of not being able to stop eating voluntarily. ">
+				>
+				["at0055"] = <
+					text = <"#11">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0056"] = <
+					text = <"1">
+					description = <"I don´t have any problem stopping eating when I feel full. ">
+				>
+				["at0057"] = <
+					text = <"2">
+					description = <"I usually can stop eating when I feel full but occasionally overeat leaving me feeling uncomfortable stuffed. ">
+				>
+				["at0058"] = <
+					text = <"3">
+					description = <"I have a problem stooping eating once I star and usually I feel uncomfortably stiffed after I eat a meal. ">
+				>
+				["at0059"] = <
+					text = <"4">
+					description = <"Because I have a problem not being able to stop eating when I want, I sometimes have to induce vomiting to relieve my stuffed feeling. ">
+				>
+				["at0060"] = <
+					text = <"#12">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0061"] = <
+					text = <"1">
+					description = <"I sem to eat just as much when I+m with others (family, social gatherings) as when I´m by myself.">
+				>
+				["at0062"] = <
+					text = <"2">
+					description = <"Sometimes, when I´m with other persons, I don´t eat as much as I want to eat because I´m self-conscious about my eating. ">
+				>
+				["at0063"] = <
+					text = <"3">
+					description = <"Frequently, I eat only a small amount of fodd when others are present, because I´m very embarassed about my eating.">
+				>
+				["at0064"] = <
+					text = <"4">
+					description = <"I feel so ashamed about overeating that I pick times to overet when I know no one will see me. I feel like a \"closet eater\".">
+				>
+				["at0065"] = <
+					text = <"#13">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0066"] = <
+					text = <"1">
+					description = <"I eat three meals a day with only an occaional between meal snack.">
+				>
+				["at0067"] = <
+					text = <"2">
+					description = <"I eat 3 meals a day. but I also normally snack betwen meals. ">
+				>
+				["at0068"] = <
+					text = <"3">
+					description = <"When I am snacking heavily, I get in the habit of skipping regular meals. ">
+				>
+				["at0069"] = <
+					text = <"4">
+					description = <"There are regular periods when I seem to be continually eating, with no planned meals. ">
+				>
+				["at0070"] = <
+					text = <"#14">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0071"] = <
+					text = <"1">
+					description = <"I don´t think much about trying to control unwanted eating urges. ">
+				>
+				["at0072"] = <
+					text = <"2">
+					description = <"At least some of the time, I feel my thoughts are pre-occupied with trying to control my eating urges- ">
+				>
+				["at0073"] = <
+					text = <"3">
+					description = <"I feel that frequently I spend much time thinking about how much I ate or about trying not to eat anymore. ">
+				>
+				["at0074"] = <
+					text = <"4">
+					description = <"It seems to me that most of my waking hours are pre-occupied by thoughts about eating or not eating. I feel like I´m constantly struggling not to eat. ">
+				>
+				["at0075"] = <
+					text = <"#15">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0076"] = <
+					text = <"1">
+					description = <"I don´t think about food a great deal. ">
+				>
+				["at0077"] = <
+					text = <"2">
+					description = <"I have strong cravings for food but they last only for brief periods of time. ">
+				>
+				["at0078"] = <
+					text = <"3">
+					description = <"I have days when I can´t seem to think about anything else but food. ">
+				>
+				["at0079"] = <
+					text = <"4">
+					description = <"Most of my days seem to be pre-occupied with thoughts about food. I feel like I live to eat. ">
+				>
+				["at0080"] = <
+					text = <"#16">
+					description = <"Instructions. Read all of the statements in each group and mark on this sheet the one that best describes the way you feel about the problems you have controlling your eating behavior. ">
+				>
+				["at0081"] = <
+					text = <"1">
+					description = <"I usually know whether or not I´m physically hungry. I take the right portion of food to satisy me. ">
+				>
+				["at0082"] = <
+					text = <"2">
+					description = <"Occasionally, I feel uncertain about knowing whether or not I´mphysically hungry. At these times it´s hard to know how much food I should take to satisfy me. ">
+				>
+				["at0083"] = <
+					text = <"3">
+					description = <"Even though I mightknow how  many calories I should eat, I don´t have any idea what is a \"normal\" amount of food for me. ">
+				>
+			>
+		>
+	>

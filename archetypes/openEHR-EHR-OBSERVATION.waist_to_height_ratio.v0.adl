@@ -1,0 +1,128 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.waist_to_height_ratio.v0
+
+concept
+	[at0000]	-- Waist to height ratio
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhao; Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com">
+		["organisation"] = <"MEDCIDES/FMUP; VirtualCare">
+		["date"] = <"2017-07-07">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the ratio of the waist circumference to height. ">
+			use = <"The archetype can be used for children (> 6 years) and adults;
+
+Use to record the ratio of the waist circumference to height.
+
+The waist to height is a calculated ratio used as an indicator of central obesity (higher values of WHtR indicate a higher risk of obesity- related cardiovascular disease). ">
+			keywords = <"waist", "height", "obesity", "stature", "WHtR">
+			misuse = <"Not to be used to record the actual waist or height. ">
+			copyright = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia, FMUP, Portugal", "Pedro Vieira-Marques, FMUP, Portugal", "Duarte Ferreira, FMUP, Portugal">
+	other_details = <
+		["references"] = <"- Yoo Eun-Gyong. Waist-to-height ratio as a screening tool for obesity and cardiometabolic. Korean Journal of pediatrics, 59 (11):425-431, 2016. 
+
+- Browning LM, Hsieh SD, Ashwell M. A systemic review of waist-to-height ratio as  as screening tool for the prediction of cardiovascular disease and diabetes: 0.5 could be a suitable global boundary value. Nutr Res Rev,  23 (2): 247-69, 2010. ">
+		["MD5-CAM-1.0.1"] = <"A5E3BB2FC5CFA66843393A08918A26C6">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Waist to height ratio
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any point in time event 
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Waist-height ratio 
+										value matches {
+											DV_PROPORTION matches {
+												is_integral matches {True}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Waist to height ratio">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0007"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Waist to height ratio">
+					description = <"The ratio of the circumference of the waist to the height. ">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Any point in time event ">
+					description = <"Default, unspecified point in the time may be explicitly defined in a template or at run-time. ">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0007"] = <
+					text = <"Waist-height ratio ">
+					description = <"Ratio of waist circumference and height. ">
+				>
+			>
+		>
+	>

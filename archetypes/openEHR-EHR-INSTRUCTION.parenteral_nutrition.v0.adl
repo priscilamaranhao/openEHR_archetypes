@@ -1,0 +1,657 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-INSTRUCTION.parenteral_nutrition.v0
+
+concept
+	[at0000]	-- Parenteral nutrition
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhão; Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDS-FMUP">
+		["date"] = <"2017-03-08">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Parenteral nutrition must be requested when the gastrointestinal tract can not be used. ">
+			use = <"To be used when the gastrointestinal tract can not be used.
+
+To be used in intractable  vomiting; severe diarrhea, gastrointestinal obstruction, pre-surgery (malnutrition); mucositis and esophagitis;
+
+To be used in children and adults. 
+
+">
+			keywords = <"Nutrition therapy", "Standard therapy">
+			misuse = <"Not to be used  in hemodynamically unstable patients;
+
+Not to be used for more than ten days. ">
+			copyright = <"OpenEHR Foundation">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia; MEDCIDS-FMUP; Portugal", "Pedro Marques, MEDCIDS-FMUP; Portugal", "Duarte Ferreira, MEDCIDS-FMUP; Portugal">
+	other_details = <
+		["references"] = <"Monte, J.C.M; Shima, M. Nutrição Parenteral. In: Cuppari, L. Guias de Medicina ambulatorial e hospitalr, EPM-UNIFESP - Nutrição clínica do adulto, 3a. edição, Barueri, SP, Ed. Manole, 2014. 
+
+Mcclave, SA; Taylor, B.E; Martidale, R.G; et al. Guidelines for the provision and assessment of nutrition support therapy in the adult critically III patient: Society of crititical care medicine (SCCM) and american society for parenteral and enteral nutrition (A.S.P.E.N); Journal of parenteral  an enteral nutrition, v.40; n.2, 2016. 
+
+">
+		["MD5-CAM-1.0.1"] = <"F4A52C37A327B3CFE95C5E87B7C2C1D0">
+	>
+
+definition
+	INSTRUCTION[at0000] matches {	-- Parenteral nutrition
+		activities cardinality matches {0..*; unordered} matches {
+			ACTIVITY[at0001] occurrences matches {0..1} matches {	-- Current Activity
+				description matches {
+					ITEM_TREE[at0002] matches {	-- Tree
+						items cardinality matches {0..*; unordered} matches {
+							ELEMENT[at0003] occurrences matches {0..1} matches {	-- Description of parenteral nutrition administration
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0004] occurrences matches {0..1} matches {	-- Proposed procedure
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0005] occurrences matches {0..1} matches {	-- The reason for the request
+								value matches {
+									DV_TEXT matches {*}
+								}
+							}
+							ELEMENT[at0026] occurrences matches {0..1} matches {	-- Osmolarity 
+								value matches {
+									C_DV_QUANTITY <
+										property = <[openehr::122]>
+										list = <
+											["1"] = <
+												units = <"m">
+											>
+										>
+									>
+								}
+							}
+							ELEMENT[at0029] occurrences matches {0..1} matches {	-- Volume 
+								value matches {
+									C_DV_QUANTITY <
+										property = <[openehr::129]>
+										list = <
+											["1"] = <
+												units = <"ml">
+											>
+											["2"] = <
+												units = <"l">
+											>
+										>
+									>
+								}
+							}
+							ELEMENT[at0031] occurrences matches {0..1} matches {	-- Parenteral nutrition time 
+								value matches {
+									C_DV_QUANTITY <
+										property = <[openehr::128]>
+										list = <
+											["1"] = <
+												units = <"d">
+											>
+											["2"] = <
+												units = <"h">
+											>
+										>
+									>
+								}
+							}
+							CLUSTER[at0034] occurrences matches {0..1} matches {	-- Diet composition 
+								items cardinality matches {1..*; unordered} matches {
+									allow_archetype CLUSTER[at0098] occurrences matches {0..*} matches {	-- Cluster
+										include
+											archetype_id/value matches {/openEHR-EHR-CLUSTER\.macronutrients(-[a-zA-Z0-9_]+)*\.v0 (2)|openEHR-EHR-CLUSTER\.micronutrients(-[a-zA-Z0-9_]+)*\.v0/}
+									}
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Glucose percentage
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0078, 	-- Glucose5%
+													at0079, 	-- Glucose 10%
+													at0080, 	-- Glucose 20%
+													at0081, 	-- Glucose 30%
+													at0082, 	-- Glucose 40%
+													at0083, 	-- Glucose 50%
+													at0084, 	-- Glucose 60%
+													at0085]	-- Glucose 70%
+												}
+											}
+										}
+									}
+									ELEMENT[at0087] occurrences matches {0..1} matches {	-- Lipid emulsion percentage
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0088, 	-- Lipid emulsion 10%
+													at0089]	-- Lipid emulsion 20%
+												}
+											}
+										}
+									}
+									ELEMENT[at0095] occurrences matches {0..1} matches {	-- Aminoacids percentage 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0096, 	-- Aminoacids 10%
+													at0097]	-- Aminoacids 20%
+												}
+											}
+										}
+									}
+									ELEMENT[at0062] occurrences matches {0..1} matches {	-- Potassium chloride
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::129]>
+												list = <
+													["1"] = <
+														units = <"ml">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0061] occurrences matches {0..1} matches {	-- Potassium phosphate
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::129]>
+												list = <
+													["1"] = <
+														units = <"ml">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0058] occurrences matches {0..1} matches {	-- Sodium chloride
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::129]>
+												list = <
+													["1"] = <
+														units = <"ml">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0090] occurrences matches {0..1} matches {	-- Sodium chloride percentage 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0091, 	-- Sodium chloride 10%
+													at0092]	-- Sodium chloride 20%
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0009] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Types of catheter
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0011, 	-- Short stay
+									at0012]	-- Long stay (tunneling)
+								}
+							}
+						}
+					}
+					ELEMENT[at0013] occurrences matches {0..1} matches {	-- Route
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0027, 	-- Peripheral 
+									at0028]	-- Central 
+								}
+							}
+						}
+					}
+					ELEMENT[at0018] occurrences matches {0..1} matches {	-- Catheter material
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0019] occurrences matches {0..1} matches {	-- Diet administration
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0020, 	-- Continuous 
+									at0021]	-- Cyclic 
+								}
+							}
+						}
+					}
+					ELEMENT[at0030] occurrences matches {0..1} matches {	-- Type of parenteral nutrition 
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0032, 	-- Total Parenteral Nutrition
+									at0033]	-- Partial Parenteral Nutrition
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Parenteral nutrition">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Current Activity">
+					description = <"Current Activity">
+				>
+				["at0002"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0003"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0004"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0005"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0009"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0010"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0011"] = <
+					text = <"*Short stay(pt)">
+					description = <"*To a short period of stay.  (pt)">
+				>
+				["at0012"] = <
+					text = <"*Long stay (tunneling)(pt)">
+					description = <"*To a long period stay. (pt)">
+				>
+				["at0013"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0018"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0019"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0020"] = <
+					text = <"*Continuous (pt)">
+					description = <"**(pt)">
+				>
+				["at0021"] = <
+					text = <"*Cyclic (pt)">
+					description = <"**(pt)">
+				>
+				["at0026"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0027"] = <
+					text = <"*Peripheral (pt)">
+					description = <"**(pt)">
+				>
+				["at0028"] = <
+					text = <"*Central (pt)">
+					description = <"**(pt)">
+				>
+				["at0029"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0030"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0031"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0032"] = <
+					text = <"*Total Parenteral Nutrition(pt)">
+					description = <"**(pt)">
+				>
+				["at0033"] = <
+					text = <"*Partial Parenteral Nutrition(pt)">
+					description = <"**(pt)">
+				>
+				["at0034"] = <
+					text = <"*New cluster(pt)">
+					description = <"**(pt)">
+				>
+				["at0058"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0061"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0062"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0077"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0078"] = <
+					text = <"*Glucose5%(pt)">
+					description = <"*Glucose 5%  prescription.  (pt)">
+				>
+				["at0079"] = <
+					text = <"*Glucose 10%(pt)">
+					description = <"*Glucose 10%  prescription.  (pt)">
+				>
+				["at0080"] = <
+					text = <"*Glucose 20%(pt)">
+					description = <"*Glucose 20%  prescription.  (pt)">
+				>
+				["at0081"] = <
+					text = <"*Glucose 30%(pt)">
+					description = <"*Glucose 30 %  prescription.  (pt)">
+				>
+				["at0082"] = <
+					text = <"*Glucose 40%(pt)">
+					description = <"*Glucose 40%  prescription.  (pt)">
+				>
+				["at0083"] = <
+					text = <"*Glucose 50%(pt)">
+					description = <"*Glucose 50%  prescription.  (pt)">
+				>
+				["at0084"] = <
+					text = <"*Glucose 60%(pt)">
+					description = <"*Glucose %  prescription.  (pt)">
+				>
+				["at0085"] = <
+					text = <"*Glucose 70%(pt)">
+					description = <"*Glucose 70 %  prescription.  (pt)">
+				>
+				["at0087"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0088"] = <
+					text = <"*Lipid emulsion 10%(pt)">
+					description = <"**(pt)">
+				>
+				["at0089"] = <
+					text = <"*Lipid emulsion 20%(pt)">
+					description = <"**(pt)">
+				>
+				["at0090"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0091"] = <
+					text = <"*Sodium chloride 10%(pt)">
+					description = <"**(pt)">
+				>
+				["at0092"] = <
+					text = <"*Sodium chloride 20%(pt)">
+					description = <"**(pt)">
+				>
+				["at0095"] = <
+					text = <"*New element(pt)">
+					description = <"**(pt)">
+				>
+				["at0096"] = <
+					text = <"*Aminoacids 10%(pt)">
+					description = <"**(pt)">
+				>
+				["at0097"] = <
+					text = <"*Aminoacids 20%(pt)">
+					description = <"**(pt)">
+				>
+				["at0098"] = <
+					text = <"*Cluster(pt)">
+					description = <"**(pt)">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Parenteral nutrition">
+					description = <"Specific request to nutrition therapy. ">
+				>
+				["at0001"] = <
+					text = <"Current Activity">
+					description = <"Current Activity">
+				>
+				["at0002"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Description of parenteral nutrition administration">
+					description = <"A detailed narrative description of the nutrition request.">
+				>
+				["at0004"] = <
+					text = <"Proposed procedure">
+					description = <"Identification of the proposed procedure, including correct size and position;">
+				>
+				["at0005"] = <
+					text = <"The reason for the request">
+					description = <"A short phrase describing the reason for the request.">
+				>
+				["at0009"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0010"] = <
+					text = <"Types of catheter">
+					description = <"Types of catheter in parenteral nutrition. ">
+				>
+				["at0011"] = <
+					text = <"Short stay">
+					description = <"To a short period stay.  ">
+				>
+				["at0012"] = <
+					text = <"Long stay (tunneling)">
+					description = <"To a long period stay. ">
+				>
+				["at0013"] = <
+					text = <"Route">
+					description = <"Catheter position in parenteral nutrition. ">
+				>
+				["at0018"] = <
+					text = <"Catheter material">
+					description = <"Catheter material to parenteral nutriton, e.g.; silicone, polyurethano, etc. ">
+				>
+				["at0019"] = <
+					text = <"Diet administration">
+					description = <"Diet management. ">
+				>
+				["at0020"] = <
+					text = <"Continuous ">
+					description = <"It consist of continuous infusion of nutrients, in periods of 12 to 24 hours, with constant flow, without interruption. ">
+				>
+				["at0021"] = <
+					text = <"Cyclic ">
+					description = <"It consist of the infusion in periods of 12 to 18 hours, usually during the night. ">
+				>
+				["at0026"] = <
+					text = <"Osmolarity ">
+					description = <"Osmolarity of the diet (mOsm/L). ">
+				>
+				["at0027"] = <
+					text = <"Peripheral ">
+					description = <"The introdution of the catheter into the peripheral of the upper limbs veins. ">
+				>
+				["at0028"] = <
+					text = <"Central ">
+					description = <"Introduction of the catheter into the cava, jugular or femoral veins. ">
+				>
+				["at0029"] = <
+					text = <"Volume ">
+					description = <"Volume of parenteral nutrition. ">
+				>
+				["at0030"] = <
+					text = <"Type of parenteral nutrition ">
+					description = <"Type of parenteral nutrition - TPN - Total parenteral nutrition or partial parenteral nutrition (PPN). ">
+				>
+				["at0031"] = <
+					text = <"Parenteral nutrition time ">
+					description = <"Parenteral nutrition time ">
+				>
+				["at0032"] = <
+					text = <"Total Parenteral Nutrition">
+					description = <"The patient is nourished exclusively by parenteral nutrition. ">
+				>
+				["at0033"] = <
+					text = <"Partial Parenteral Nutrition">
+					description = <"The nutritional support that completes oral intake. ">
+				>
+				["at0034"] = <
+					text = <"Diet composition ">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Sodium chloride">
+					description = <"The amount of sodium chloride. ">
+				>
+				["at0061"] = <
+					text = <"Potassium phosphate">
+					description = <"Potassium phosphate prescription. ">
+				>
+				["at0062"] = <
+					text = <"Potassium chloride">
+					description = <"Potassium chloride prescription. ">
+				>
+				["at0077"] = <
+					text = <"Glucose percentage">
+					description = <"The percentage of glucose. ">
+				>
+				["at0078"] = <
+					text = <"Glucose5%">
+					description = <"Glucose 5%  prescription.  ">
+				>
+				["at0079"] = <
+					text = <"Glucose 10%">
+					description = <"Glucose 10%  prescription.  ">
+				>
+				["at0080"] = <
+					text = <"Glucose 20%">
+					description = <"Glucose 20%  prescription.  ">
+				>
+				["at0081"] = <
+					text = <"Glucose 30%">
+					description = <"Glucose 30 %  prescription.  ">
+				>
+				["at0082"] = <
+					text = <"Glucose 40%">
+					description = <"Glucose 40%  prescription.  ">
+				>
+				["at0083"] = <
+					text = <"Glucose 50%">
+					description = <"Glucose 50%  prescription.  ">
+				>
+				["at0084"] = <
+					text = <"Glucose 60%">
+					description = <"Glucose 60 %  prescription.  ">
+				>
+				["at0085"] = <
+					text = <"Glucose 70%">
+					description = <"Glucose 70 %  prescription.  ">
+				>
+				["at0087"] = <
+					text = <"Lipid emulsion percentage">
+					description = <"The percentage of  lipid emulsion. ">
+				>
+				["at0088"] = <
+					text = <"Lipid emulsion 10%">
+					description = <"*">
+				>
+				["at0089"] = <
+					text = <"Lipid emulsion 20%">
+					description = <"*">
+				>
+				["at0090"] = <
+					text = <"Sodium chloride percentage ">
+					description = <"The percentage of sodium chloride. ">
+				>
+				["at0091"] = <
+					text = <"Sodium chloride 10%">
+					description = <"*">
+				>
+				["at0092"] = <
+					text = <"Sodium chloride 20%">
+					description = <"*">
+				>
+				["at0095"] = <
+					text = <"Aminoacids percentage ">
+					description = <"The percentage of aminoacids.">
+				>
+				["at0096"] = <
+					text = <"Aminoacids 10%">
+					description = <"*">
+				>
+				["at0097"] = <
+					text = <"Aminoacids 20%">
+					description = <"*">
+				>
+				["at0098"] = <
+					text = <"Cluster">
+					description = <"Marcronutrients and micronutrients  prescription. ">
+				>
+			>
+		>
+	>

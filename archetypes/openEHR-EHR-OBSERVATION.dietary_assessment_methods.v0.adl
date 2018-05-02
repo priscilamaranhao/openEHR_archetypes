@@ -1,0 +1,510 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.dietary_assessment_methods.v0
+
+concept
+	[at0000]	-- Dietary intake assessment 
+language
+	original_language = <[ISO_639-1::pt]>
+	translations = <
+		["en-us"] = <
+			language = <[ISO_639-1::en-us]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhão e Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDS-FMUP; VIRTUAL CARE">
+		["date"] = <"2016-12-05">
+	>
+	details = <
+		["en-us"] = <
+			language = <[ISO_639-1::en-us]>
+			purpose = <"The assessment of food consumption in clinical  practice is often carried out to develop and implement  nutritional advice. ">
+			use = <"To be used for recording retrospective and prospective food consumption.
+
+To be used in adults and children.
+
+To be used in different assess aims: 1. Quantitative evaluation of nutrition intake; 2. Assessment of food consumption or food groups; 3. Assessment of food standard. 
+
+">
+			keywords = <"*Food consumption(pt)", "*Dietary assessment(pt)", "*Food intake(pt)", "*Diet record(pt)">
+			misuse = <"Not to be used alone to record the assessment of nutrition state. 
+
+Not to be used in children younger than 7 years without responsible to answer the questions. ">
+			copyright = <"">
+		>
+		["pt"] = <
+			language = <[ISO_639-1::pt]>
+			purpose = <"The assessment of food consumption in clinical  practice is often carried out to development and implement  nutritional advice. ">
+			use = <"To be used for recording retrospective and prospective food consumption.
+
+To be used in adults and children.
+
+To be used in differents assess aims: 1. Quantitative evaluation of nutrition intake; 2. Assessment of food consumption or food groups; 3. Assessment of food standard. 
+
+">
+			keywords = <"Food consumption", "Dietary assessment", "Food intake", "Diet record", "Eating habits">
+			misuse = <"Not be used alone to record the assessement of nutrition state. 
+
+Not be used  in children younger than 7 years without responsables to answer the questions. ">
+			copyright = <"">
+		>
+		["pt-br"] = <
+			language = <[ISO_639-1::pt-br]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Ricardo Correia", "Pedro Marques", "Duarte Ferreira">
+	other_details = <
+		["references"] = <"Fisberg, RM; Marchioni, DML; Colucci, ACA. Avaliação do consumo alimentar e da ingestão de nutrientes na prática clínica. Arq. Bras. Metab. 2009; 53/5. 
+
+Vitolo, MR. Avaliação nutricional do adulto. In: Vitolo, MR. Nutrição da gestação ao envelhecimento. Rio de Janeiro: Ed. Rubio, 2008. 
+
+Falcão-Gomes, RC; Coelho, AAS, Schmitz, BAS. Caracterização dos estudos de avaliação do consumo alimentar de pré escolares. rev. Nutr. Campinas, 19(6):713-27, nov/dez, 2006. 
+
+World Health Organization. Preparation and use of food-based dietary guidelines. Geneva; 1998. Technical Report Series, 880.
+
+Cruz, ATR; Souza, JMP et al. Avaliação da concordãncia dos métodos de pesagem direta de alimentos em creches, São Paulo, Brasil. Rev. Bras. Epidemiol, vol. 6, n.3, 2003. ">
+		["MD5-CAM-1.0.1"] = <"7BAB479923E49DF19436726301F3BA25">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Dietary intake assessment 
+		data matches {
+			HISTORY[at0001] matches {	-- *Event Series(pt)
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- *Tree(pt)
+								items cardinality matches {4..*; unordered} matches {
+									CLUSTER[at0006] occurrences matches {3} matches {	-- Retrospective
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Diet history
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Food frequency questionnaire
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0007] matches {	-- 24 hour recall
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0010] occurrences matches {0..1} matches {	-- Prospective
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Direct observation
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Duplicate and portion analysis
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Electronic record
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Food records
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Direct weighing
+												value matches {
+													DV_TEXT matches {*}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						state matches {
+							ITEM_TREE[at0020] matches {	-- *Tree(pt)
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Confounding factors
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+					EVENT[at0022] occurrences matches {0..1} matches {	-- 3 days
+						data matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/data[at0003]	-- /data[*Event Series(pt)]/events[Any event]/data[*Tree(pt)]
+						}
+						state matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/state[at0020]	-- /data[*Event Series(pt)]/events[Any event]/state[*Tree(pt)]
+						}
+					}
+					EVENT[at0023] occurrences matches {0..1} matches {	-- 4 days
+						data matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/data[at0003]	-- /data[*Event Series(pt)]/events[Any event]/data[*Tree(pt)]
+						}
+						state matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/state[at0020]	-- /data[*Event Series(pt)]/events[Any event]/state[*Tree(pt)]
+						}
+					}
+					EVENT[at0024] occurrences matches {0..1} matches {	-- 7 day
+						data matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/data[at0003]	-- /data[*Event Series(pt)]/events[Any event]/data[*Tree(pt)]
+						}
+						state matches {
+							use_node ITEM_TREE /data[at0001]/events[at0002]/state[at0020]	-- /data[*Event Series(pt)]/events[Any event]/state[*Tree(pt)]
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0004] matches {	-- *Tree(pt)
+				items cardinality matches {1..*; unordered} matches {
+					ELEMENT[at0016] matches {	-- Method
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0017, 	-- Automatic entry
+									at0018]	-- Direct entry
+								}
+							}
+						}
+					}
+					ELEMENT[at0019] occurrences matches {0..1} matches {	-- Tools
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["pt"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dietary intake assessment ">
+					description = <"The dietary intake assessment will provide data that are  risk factors  to determinated others nutrition assessments parameters. ">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Any timed recording food consumption assessment.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Retrospective">
+					description = <"Retrospective assessment. ">
+				>
+				["at0007"] = <
+					text = <"24 hour recall">
+					description = <"24 hour recall consist of a listing of foods and beverages consumed the previous day or in the 24h prior to the recall interview. ">
+				>
+				["at0008"] = <
+					text = <"Food frequency questionnaire">
+					description = <"Food frequency questionnaire (FFQ) referred to as \"list-based diet history\" consist of a structured listing of individual food or food groupings.  For each  item on the food list, the respondent is asked to estimate the frequency of consumption based on specified frequency categories, which indicate the number of times the food is usually consumed per day, week, month or year. This method can be classified such as: qualitative, semi-qualitative and quantitative. ">
+				>
+				["at0009"] = <
+					text = <"Diet history">
+					description = <"The meal-based diet history is designed to assess usual individual intake. It consist of detailed listing of the types of food  and beverage  commonly consumed at each eating occasion over a defined period which is often  a ´typical´ week. ">
+				>
+				["at0010"] = <
+					text = <"Prospective">
+					description = <"Prospective assessment. ">
+				>
+				["at0011"] = <
+					text = <"Direct weighing">
+					description = <"Direct weighing  determine  the average  amount of food offered to an subject and the quantify of food consumed per meal. ">
+				>
+				["at0012"] = <
+					text = <"Food records">
+					description = <"Food records also called food diaries, require that the subject (or observer) report all foods and beverages consumed for specified period (3, 4 or 7 days). eg: estimated, videotape; phone, photografic, etc. ">
+				>
+				["at0013"] = <
+					text = <"Electronic record">
+					description = <"Electronic record by mobile phone app or computed program.">
+				>
+				["at0014"] = <
+					text = <"Duplicate and portion analysis">
+					description = <"Duplicate and portion analysis is  assess chemically  from food consumed in a period (eg: 24h) by the subject and stored in bowl. ">
+				>
+				["at0015"] = <
+					text = <"Direct observation">
+					description = <"Direct observation method can be assess by the direct observation or trained observers. ">
+				>
+				["at0016"] = <
+					text = <"Method">
+					description = <"The method of entering the dietary calculation. ">
+				>
+				["at0017"] = <
+					text = <"Automatic entry">
+					description = <"dietary methods  calculated and entered without user intervention. ">
+				>
+				["at0018"] = <
+					text = <"Direct entry">
+					description = <"Dietary methods calculated by professional.">
+				>
+				["at0019"] = <
+					text = <"Tools">
+					description = <"Tools often used in dietary assessement methods. Eg:  food composition table; food picture book, etc.  ">
+				>
+				["at0020"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0021"] = <
+					text = <"Confounding factors">
+					description = <"Comment on and record other incidental factors that may be contributing to the dietary assessment such as individual memory (mainly old people);  individul´s schooling,  non cooperative individual; informations about what food intake and not what waa holiday, etc. ">
+				>
+				["at0022"] = <
+					text = <"3 days ">
+					description = <"3 days recording food consumption assessment.">
+				>
+				["at0023"] = <
+					text = <"4 days">
+					description = <"4 days recording food consumption assessment.">
+				>
+				["at0024"] = <
+					text = <"7 days">
+					description = <"7 days recording food consumption assessment.">
+				>
+			>
+		>
+		["pt-br"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Dietary intake assessment (pt)">
+					description = <"*The dietary assessment methods will provide data that are  risk factors  to determinated others nutrition assessments parameters. (pt)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"*Any event(pt)">
+					description = <"*Any timed recording food consumption assessment.(pt)">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0006"] = <
+					text = <"*Retrospective(pt)">
+					description = <"**(pt)">
+				>
+				["at0007"] = <
+					text = <"*24 hour recall(pt)">
+					description = <"*24 hour recall consist of a listing of foods and beverages consumed the previous day or in the 24h prior to the recall interview. (pt)">
+				>
+				["at0008"] = <
+					text = <"*Food frequency questionnaire(pt)">
+					description = <"*Food frequency questionnaire (FFQ) referred to as \"list-based diet history\" consist of a structured listing of individual food or food groupings.  For each  item on the food list, the respondent is asked to estimate the frequency of consumption based on specified frequency categories, which indicate the number of times the food is usually consumed per day, week, month or year. This method can be classified such as: qualitative, semi-qualitative and quantitative. (pt)">
+				>
+				["at0009"] = <
+					text = <"*Diet history(pt)">
+					description = <"*The meal-based diet history is designed to assess usual individual intake. It consist of detailed listing of the types of food  and beverage  commonly consumed at each eating occasion over a defined period which is often  a ´typical´ week. (pt)">
+				>
+				["at0010"] = <
+					text = <"*Prospective(pt)">
+					description = <"**(pt)">
+				>
+				["at0011"] = <
+					text = <"*Direct weighing(pt)">
+					description = <"*Direct weighing  determine  the average  amount of food offered to an subject and the quantify of food consumed per meal. (pt)">
+				>
+				["at0012"] = <
+					text = <"*Food records(pt)">
+					description = <"*Food records also called food diaries, require that the subject (or observer) report all foods and beverages consumed for specified period (3, 4 or 7 days). eg: estimated, videotape; phone, photografic, etc. (pt)">
+				>
+				["at0013"] = <
+					text = <"*Electronic record(pt)">
+					description = <"*Electronic record by mobile phone app or computed program.(pt)">
+				>
+				["at0014"] = <
+					text = <"*Duplicate and portion analysis(pt)">
+					description = <"*Duplicate and portion analysis is  assess chemically  from food consumed in a period (eg: 24h) by the subject and stored in bowl. (pt)">
+				>
+				["at0015"] = <
+					text = <"*Direct observation(pt)">
+					description = <"*Direct observation method can be assess by the direct observation or trained observers. (pt)">
+				>
+				["at0016"] = <
+					text = <"*Method(pt)">
+					description = <"*The method of entering the dietary calculation. (pt)">
+				>
+				["at0017"] = <
+					text = <"*Automatic entry(pt)">
+					description = <"*dietary methods  calculated and entered without user intervention. (pt)">
+				>
+				["at0018"] = <
+					text = <"*Direct entry(pt)">
+					description = <"*Dietary methods calculated by professional.(pt)">
+				>
+				["at0019"] = <
+					text = <"*Tools(pt)">
+					description = <"*Tools often used in dietary assessement methods. Eg:  food composition table. (pt)">
+				>
+				["at0020"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0021"] = <
+					text = <"*Confounding factors(pt)">
+					description = <"*Comment on and record other incidental factors that may be contributing to the dietary assessment such as individual memory (mainly old people);  individul´s schooling,  non cooperative individual; informations about what food intake and not what waa holiday, etc. (pt)">
+				>
+				["at0022"] = <
+					text = <"*3 days (pt)">
+					description = <"**(pt)">
+				>
+				["at0023"] = <
+					text = <"*4 days(pt)">
+					description = <"*Food record(pt)">
+				>
+				["at0024"] = <
+					text = <"*7 days(pt)">
+					description = <"*Food record. (pt)">
+				>
+			>
+		>
+		["en-us"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dietary intake assessment ">
+					description = <"The dietary assessment methods will provide data  to determinate others parameters to nutrition assessments. ">
+				>
+				["at0001"] = <
+					text = <"*Event Series(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Any timed recording dietary intake assessment.">
+				>
+				["at0003"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0004"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0006"] = <
+					text = <"Retrospective">
+					description = <"Assessment of dietary intake from past periods.">
+				>
+				["at0007"] = <
+					text = <"24 hour recall">
+					description = <"Assessment of 24-hour dietary intake, which consists of a listing of foods and beverages consumed the previous day or in the 24h prior to the recall interview. ">
+				>
+				["at0008"] = <
+					text = <"Food frequency questionnaire">
+					description = <"Assessment of food frequency questionnaire (FFQ) which referred to as \"list-based diet history\" that consists of a structured listing of individual food or food groupings.  For each item on the food list, the individual is asked to estimate the frequency of consumption based on specified frequency categories, which indicates the number of times the food is usually consumed per day, week, month or year. This method can be classified such as: qualitative, semi-qualitative and quantitative. ">
+				>
+				["at0009"] = <
+					text = <"Diet history">
+					description = <"Assessment of intake dietary by diet history is designed to assess usual individual intake. It consists of the detailed listing of the types of food and beverage commonly consumed at each eating occasion over a defined period which is often a ´typical´ week">
+				>
+				["at0010"] = <
+					text = <"Prospective">
+					description = <"Assessment of dietary intake overtime of an individual.">
+				>
+				["at0011"] = <
+					text = <"Direct weighing">
+					description = <"Assessment of dietary intake by direct weighing, which determines the average amount of food offered to a subject and the quantify of food consumed per meal. ">
+				>
+				["at0012"] = <
+					text = <"Food records">
+					description = <"Assessment of dietary intake by food records also called food diaries, that requires that the subject (or observer) report all foods and beverages consumed for specified period (3, 4 or 7 days). eg: estimated, videotape; phone, photographic, etc.">
+				>
+				["at0013"] = <
+					text = <"Electronic record">
+					description = <"Assessment of electronic record by mobile phone app or computer program.">
+				>
+				["at0014"] = <
+					text = <"Duplicate and portion analysis">
+					description = <"Duplicate and portion analysis are  assess chemically from food consumed in a period (eg: 24h) by the subject and stored in a bowl.">
+				>
+				["at0015"] = <
+					text = <"Direct observation">
+					description = <"Assessment of dietary intake by direct observation method can be assessed by the direct observation or trained observers. ">
+				>
+				["at0016"] = <
+					text = <"Method">
+					description = <"The method of entering the dietary calculation. ">
+				>
+				["at0017"] = <
+					text = <"Automatic entry">
+					description = <"dietary methods  calculated and entered without user intervention. ">
+				>
+				["at0018"] = <
+					text = <"Direct entry">
+					description = <"Dietary methods calculated by professional.">
+				>
+				["at0019"] = <
+					text = <"Tools">
+					description = <"Tools often used in dietary assessment methods. e.g:  food composition table; food photos, food´s replica, food´s scale, etc. ">
+				>
+				["at0020"] = <
+					text = <"*Tree(pt)">
+					description = <"*@ internal @(pt)">
+				>
+				["at0021"] = <
+					text = <"Confounding factors">
+					description = <"Comment on and record other incidental factors that may be contributing to the dietary intake assessment such as individual memory (mainly old people);  individual´s schooling,  no patient´s cooperation; when the patient informed about what food was served and not what was intake, etc. ">
+				>
+				["at0022"] = <
+					text = <"3 days">
+					description = <"Dietary intake record for 3 days.">
+				>
+				["at0023"] = <
+					text = <"4 days">
+					description = <"Dietary intake record for 4 days.">
+				>
+				["at0024"] = <
+					text = <"7 day">
+					description = <"Dietary intake record for 7 days. ">
+				>
+			>
+		>
+	>

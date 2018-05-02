@@ -1,0 +1,952 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.eating_disorder_examination_questionnaire__ede_q.v0
+
+concept
+	[at0000]	-- Eating disorder examination questionnaire  EDE-Q
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Priscila Maranhao; Gustavo Bacelar">
+		["email"] = <"priscilamaranhao@gmail.com; gbacelar@gmail.com">
+		["organisation"] = <"MEDCIDS/FMUP; VirtualCare">
+		["date"] = <"2018-04-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The purpose of Eating Disorder Examination Questionnaire (EDE-Q) is to identify risk behavior for eating disorders. ">
+			use = <"To be used to identify risk behavior for eating disorders (e.g anorexia, bulimia, etc);
+
+To be used to adolescents and adults. 
+
+The questions are concerned with the past four weeks 28 days only. 
+
+It was created from the original document (validated in England), and it must be validated to other population. 
+">
+			keywords = <"EDE-Q", "eating disorder", "disordered eating ", "Bulimia", "Anorexia">
+			misuse = <"Not to be used to eating disorders diagnosis. 
+
+">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Ricardo Cruz-Correia,MEDICDS- FMUP, Portugal", "Pedro Vieira-Marques, MEDCIDS - FMUP, Portugal", "Duarte Nuno Gonçalves-Ferreira, MEDCIDS-FMUP, Portugal">
+	other_details = <
+		["references"] = <"Fairburn, C.G & Beglin, S.J (1994). Assessment of eating disorders: Interview or self-report questionnaire? International Journal of eating disorders. 16, 363-70. ">
+		["MD5-CAM-1.0.1"] = <"6C95130C5401E2145C384069D1A523E0">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Eating disorder examination questionnaire  EDE-Q
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1. Have you been deliberately TRYING to limit the amount of food you eat to influence your shape or weight (whether or not you are succeeded?)
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0016, 	-- No days
+													at0017, 	-- 1-5 days
+													at0018, 	-- 6-12 days
+													at0019, 	-- 13-15 days
+													at0020, 	-- 16-22 days
+													at0021, 	-- 23-27 days
+													at0022]	-- Every day
+												}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 2. Have you gone for long periods of time (8 waking hours or more) without eating anything at all in order to influence your shape or weight?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0023, 	-- No days
+													at0024, 	-- 1-5 days
+													at0025, 	-- 6-12 days
+													at0026, 	-- 13-15 days
+													at0027, 	-- 16-22 days
+													at0028, 	-- 23-27 days
+													at0029]	-- Every day
+												}
+											}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 3. Have you tried to excluded from your diet any foods that you like in order to influence your shape or weight (wether or not you have succeeded)?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0030, 	-- No days
+													at0031, 	-- 1-5 days
+													at0032, 	-- 6-12 days
+													at0033, 	-- 13-15 days
+													at0034, 	-- 16-22 days
+													at0035, 	-- 23-27 days
+													at0036]	-- Every day
+												}
+											}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 4. Have you TRIED to follow definite rules regarding your eating (for example, a calorie limit) in order to influence your shape or weight (whether or not you have succeeded)?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0037, 	-- No days
+													at0038, 	-- 1-5 days
+													at0039, 	-- 6-12 days 
+													at0040, 	-- 13-15 days
+													at0041, 	-- 16-22 days 
+													at0042, 	-- 23-27 days
+													at0043]	-- Every day
+												}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5. Have you had a definite desire to have an EMPTY stomach with the aim of influencing your shape or weight?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0044, 	-- No days
+													at0045, 	-- 1-5 days
+													at0046, 	-- 6-12 days
+													at0047, 	-- 13-15 days
+													at0048, 	-- 16-22 days
+													at0049, 	-- 23-27 days
+													at0050]	-- Every day
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 6. Have you had a  definite desire to have a TOTALLY FLAT stomach?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0051, 	-- No days 
+													at0052, 	-- 1-5 days
+													at0053, 	-- 6-12 days
+													at0054, 	-- 13-15 days
+													at0055, 	-- 16-22 days 
+													at0056, 	-- 23-27 days 
+													at0057]	-- Every day
+												}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 7. Has thinking about  FOOD, EATING OR CALORIES made it very difficult to concentrate on things you are interested in (for example, working, following a conversation, or reading?)
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0058, 	-- No days
+													at0059, 	-- 1-5 days
+													at0060, 	-- 6-12 days
+													at0061, 	-- 13-15 days 
+													at0062, 	-- 16-22 days
+													at0063, 	-- 23-27 days 
+													at0064]	-- Every day
+												}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 8. Has thinking about SHAPE OR WEIGHT made  it very difficult to concentrate on things you are interested in (for exemple, working, following a conversation, or reading)?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0065, 	-- No days
+													at0066, 	-- 1-5 days
+													at0067, 	-- 6-12 days
+													at0068, 	-- 13-15 days
+													at0069, 	-- 16-22 days
+													at0070, 	-- 23-27 days
+													at0071]	-- Everyday
+												}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 9. Have you had a definite fear of losing control over eating?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0072, 	-- No days
+													at0073, 	-- 1-5 days 
+													at0074, 	-- 6-12 days
+													at0075, 	-- 13-15 days
+													at0076, 	-- 16-22 days 
+													at0077, 	-- 23-27 days
+													at0078]	-- Everyday
+												}
+											}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 10. Have you had a definite fear that you might gain weight?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0079, 	-- No days
+													at0080, 	-- 1-5 days
+													at0081, 	-- 6-12 days 
+													at0082, 	-- 13-15 days 
+													at0083, 	-- 16-22 days 
+													at0084, 	-- 23-27 days
+													at0085]	-- Everyday 
+												}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- 11. Have you felt fat?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0086, 	-- No days 
+													at0087, 	-- 1-5 days
+													at0088, 	-- 6-12 days 
+													at0089, 	-- 13-15 days
+													at0090, 	-- 16-22 days 
+													at0091, 	-- 23-27 days 
+													at0092]	-- Every day 
+												}
+											}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 12. Have you had a strong desire to lose weight?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0093, 	-- No days
+													at0094, 	-- 1-5 days 
+													at0095, 	-- 6-12 days 
+													at0096, 	-- 13-15 days 
+													at0097, 	-- 16-22 days 
+													at0098, 	-- 23-27 days
+													at0099]	-- Everyday
+												}
+											}
+										}
+									}
+									ELEMENT[at0100] occurrences matches {0..1} matches {	-- 13. Over the past 28 days, how many TIMES have you eaten what other people would regard as an UNUSUALLY LARGE AMOUNT OF FOOD (given the circumstances)?
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"d">
+														magnitude = <|0.0..0.028|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0102] occurrences matches {0..1} matches {	-- 14. ... on how many of these times did you have a sense of having lost control over eating (at the time that you were eating)?
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"d">
+														magnitude = <|0.0..28.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0103] occurrences matches {0..1} matches {	-- 15. Over the past 28 days, on how many DAYS have such episodes of ovreating occurred (i.e.,you have eaten an usually large amount of food and have had a sense of loss of control at the time?)
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"d">
+														magnitude = <|0.0..28.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0104] occurrences matches {0..1} matches {	-- 16. Over the past 28 days, how many TIMES have you made  yourself sick (vomit) as a means of controlling your shape or weight?
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"d">
+														magnitude = <|0.0..28.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0105] occurrences matches {0..1} matches {	-- 17. Over the past 28 days, how many TIMES have you taken laxatives as a means of controlling  your shape or weight?
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"d">
+														magnitude = <|0.0..28.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0106] occurrences matches {0..1} matches {	-- 18. Over the past 28 days, how many TIMES have you exrecised in a "driven" or "compulsive" way as a means of controlling your weight, shape or amount of fat, or to burn of calories?
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"d">
+														magnitude = <|0.0..28.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0107] occurrences matches {0..1} matches {	-- 19. Over the past 28 days, on how many days have you eaten  in secret (ie, furtively)? ... Do not count episodes of binge eating
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0108, 	-- No days 
+													at0109, 	-- 1-5 days
+													at0110, 	-- 6-12 days
+													at0111, 	-- 13-15 days 
+													at0112, 	-- 16-22 days 
+													at0113, 	-- 23-27 days
+													at0114]	-- Everyday
+												}
+											}
+										}
+									}
+									ELEMENT[at0115] occurrences matches {0..1} matches {	-- 20. On what proportion of the times that you have eaten  have you felt guilty (felt that you´ve done wrong) because of its effect on your shape or weight? ...Do not count episodes of binge eating. 
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0116, 	-- None of the times
+													at0117, 	-- A few of the times
+													at0118, 	-- Less than half
+													at0119, 	-- Half of the times
+													at0120, 	-- More than half 
+													at0121, 	-- Most of the time
+													at0122]	-- Every time
+												}
+											}
+										}
+									}
+									ELEMENT[at0129] occurrences matches {0..1} matches {	-- 21. Over the past 28 days,how concerned have you been about other people seeing you eat? ... Do not count episodes of binge eating
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..6|}
+											}
+										}
+									}
+									ELEMENT[at0130] occurrences matches {0..1} matches {	-- 22. Has your WEIGHT influenced how you think about (judge) yourself as a person?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..6|}
+											}
+										}
+									}
+									ELEMENT[at0131] occurrences matches {0..1} matches {	-- 23. Has your SHAPE influenced  how you think about  (judge) yourself as a person?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..6|}
+											}
+										}
+									}
+									ELEMENT[at0132] occurrences matches {0..1} matches {	-- 24. How much would it have upset you if you had been asked to weigh yourself  once a week (no more, or less, often) for the next four weeks?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..6|}
+											}
+										}
+									}
+									ELEMENT[at0133] occurrences matches {0..1} matches {	-- 25. How dissatisfied have you been with your WEIGHT?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..6|}
+											}
+										}
+									}
+									ELEMENT[at0134] occurrences matches {0..1} matches {	-- 26. How dissatisfied have you been with your SHAPE?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..6|}
+											}
+										}
+									}
+									ELEMENT[at0135] occurrences matches {0..1} matches {	-- 27. How uncomfortable have you felt seeing your body (for example, seeing your shape in the mirror, in a shop window reflection, while undressing or taking a bath or shower)?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..6|}
+											}
+										}
+									}
+									ELEMENT[at0136] occurrences matches {0..1} matches {	-- 28. How umconfortable have you felt about OTHERS seeing your shape or figure (for example, in communal changing rooms, when swimming, or wearing tight clothes)? 
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..6|}
+											}
+										}
+									}
+									ELEMENT[at0137] occurrences matches {0..1} matches {	-- Total Scoring 
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Eating disorder examination questionnaire  EDE-Q">
+					description = <"Screening to eating behavior disorders. ">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Any event ">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"1. Have you been deliberately TRYING to limit the amount of food you eat to influence your shape or weight (whether or not you are succeeded?)">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0005"] = <
+					text = <"2. Have you gone for long periods of time (8 waking hours or more) without eating anything at all in order to influence your shape or weight?">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0006"] = <
+					text = <"3. Have you tried to excluded from your diet any foods that you like in order to influence your shape or weight (wether or not you have succeeded)?">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0007"] = <
+					text = <"4. Have you TRIED to follow definite rules regarding your eating (for example, a calorie limit) in order to influence your shape or weight (whether or not you have succeeded)?">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0008"] = <
+					text = <"5. Have you had a definite desire to have an EMPTY stomach with the aim of influencing your shape or weight?">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0009"] = <
+					text = <"6. Have you had a  definite desire to have a TOTALLY FLAT stomach?">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0010"] = <
+					text = <"7. Has thinking about  FOOD, EATING OR CALORIES made it very difficult to concentrate on things you are interested in (for example, working, following a conversation, or reading?)">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0011"] = <
+					text = <"8. Has thinking about SHAPE OR WEIGHT made  it very difficult to concentrate on things you are interested in (for exemple, working, following a conversation, or reading)?">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0012"] = <
+					text = <"9. Have you had a definite fear of losing control over eating?">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0013"] = <
+					text = <"10. Have you had a definite fear that you might gain weight?">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0014"] = <
+					text = <"12. Have you had a strong desire to lose weight?">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0015"] = <
+					text = <"11. Have you felt fat?">
+					description = <"Questions: 1-12: Please put the appropriate number. Remember that the questions only refer to the past four weeks (28 days) only. ">
+				>
+				["at0016"] = <
+					text = <"No days">
+					description = <"0">
+				>
+				["at0017"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0018"] = <
+					text = <"6-12 days">
+					description = <"2">
+				>
+				["at0019"] = <
+					text = <"13-15 days">
+					description = <"3">
+				>
+				["at0020"] = <
+					text = <"16-22 days">
+					description = <"4">
+				>
+				["at0021"] = <
+					text = <"23-27 days">
+					description = <"5">
+				>
+				["at0022"] = <
+					text = <"Every day">
+					description = <"6">
+				>
+				["at0023"] = <
+					text = <"No days">
+					description = <"0">
+				>
+				["at0024"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0025"] = <
+					text = <"6-12 days">
+					description = <"2">
+				>
+				["at0026"] = <
+					text = <"13-15 days">
+					description = <"3">
+				>
+				["at0027"] = <
+					text = <"16-22 days">
+					description = <"4">
+				>
+				["at0028"] = <
+					text = <"23-27 days">
+					description = <"5">
+				>
+				["at0029"] = <
+					text = <"Every day">
+					description = <"6">
+				>
+				["at0030"] = <
+					text = <"No days">
+					description = <"0">
+				>
+				["at0031"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0032"] = <
+					text = <"6-12 days">
+					description = <"2">
+				>
+				["at0033"] = <
+					text = <"13-15 days">
+					description = <"3">
+				>
+				["at0034"] = <
+					text = <"16-22 days">
+					description = <"4">
+				>
+				["at0035"] = <
+					text = <"23-27 days">
+					description = <"5">
+				>
+				["at0036"] = <
+					text = <"Every day">
+					description = <"6">
+				>
+				["at0037"] = <
+					text = <"No days">
+					description = <"0">
+				>
+				["at0038"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0039"] = <
+					text = <"6-12 days ">
+					description = <"2">
+				>
+				["at0040"] = <
+					text = <"13-15 days">
+					description = <"3">
+				>
+				["at0041"] = <
+					text = <"16-22 days ">
+					description = <"4">
+				>
+				["at0042"] = <
+					text = <"23-27 days">
+					description = <"5">
+				>
+				["at0043"] = <
+					text = <"Every day">
+					description = <"6">
+				>
+				["at0044"] = <
+					text = <"No days">
+					description = <"0">
+				>
+				["at0045"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0046"] = <
+					text = <"6-12 days">
+					description = <"2">
+				>
+				["at0047"] = <
+					text = <"13-15 days">
+					description = <"3">
+				>
+				["at0048"] = <
+					text = <"16-22 days">
+					description = <"4">
+				>
+				["at0049"] = <
+					text = <"23-27 days">
+					description = <"5">
+				>
+				["at0050"] = <
+					text = <"Every day">
+					description = <"6">
+				>
+				["at0051"] = <
+					text = <"No days ">
+					description = <"0">
+				>
+				["at0052"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0053"] = <
+					text = <"6-12 days">
+					description = <"2">
+				>
+				["at0054"] = <
+					text = <"13-15 days">
+					description = <"3">
+				>
+				["at0055"] = <
+					text = <"16-22 days ">
+					description = <"4">
+				>
+				["at0056"] = <
+					text = <"23-27 days ">
+					description = <"5">
+				>
+				["at0057"] = <
+					text = <"Every day">
+					description = <"6">
+				>
+				["at0058"] = <
+					text = <"No days">
+					description = <"0">
+				>
+				["at0059"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0060"] = <
+					text = <"6-12 days">
+					description = <"2">
+				>
+				["at0061"] = <
+					text = <"13-15 days ">
+					description = <"3">
+				>
+				["at0062"] = <
+					text = <"16-22 days">
+					description = <"4">
+				>
+				["at0063"] = <
+					text = <"23-27 days ">
+					description = <"5">
+				>
+				["at0064"] = <
+					text = <"Every day">
+					description = <"6">
+				>
+				["at0065"] = <
+					text = <"No days">
+					description = <"0">
+				>
+				["at0066"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0067"] = <
+					text = <"6-12 days">
+					description = <"2">
+				>
+				["at0068"] = <
+					text = <"13-15 days">
+					description = <"3">
+				>
+				["at0069"] = <
+					text = <"16-22 days">
+					description = <"4">
+				>
+				["at0070"] = <
+					text = <"23-27 days">
+					description = <"5">
+				>
+				["at0071"] = <
+					text = <"Everyday">
+					description = <"6">
+				>
+				["at0072"] = <
+					text = <"No days">
+					description = <"0">
+				>
+				["at0073"] = <
+					text = <"1-5 days ">
+					description = <"1">
+				>
+				["at0074"] = <
+					text = <"6-12 days">
+					description = <"2">
+				>
+				["at0075"] = <
+					text = <"13-15 days">
+					description = <"3">
+				>
+				["at0076"] = <
+					text = <"16-22 days ">
+					description = <"4">
+				>
+				["at0077"] = <
+					text = <"23-27 days">
+					description = <"5">
+				>
+				["at0078"] = <
+					text = <"Everyday">
+					description = <"6">
+				>
+				["at0079"] = <
+					text = <"No days">
+					description = <"0">
+				>
+				["at0080"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0081"] = <
+					text = <"6-12 days ">
+					description = <"2">
+				>
+				["at0082"] = <
+					text = <"13-15 days ">
+					description = <"3">
+				>
+				["at0083"] = <
+					text = <"16-22 days ">
+					description = <"4">
+				>
+				["at0084"] = <
+					text = <"23-27 days">
+					description = <"5">
+				>
+				["at0085"] = <
+					text = <"Everyday ">
+					description = <"6">
+				>
+				["at0086"] = <
+					text = <"No days ">
+					description = <"0">
+				>
+				["at0087"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0088"] = <
+					text = <"6-12 days ">
+					description = <"2">
+				>
+				["at0089"] = <
+					text = <"13-15 days">
+					description = <"3">
+				>
+				["at0090"] = <
+					text = <"16-22 days ">
+					description = <"4">
+				>
+				["at0091"] = <
+					text = <"23-27 days ">
+					description = <"5">
+				>
+				["at0092"] = <
+					text = <"Every day ">
+					description = <"6">
+				>
+				["at0093"] = <
+					text = <"No days">
+					description = <"0">
+				>
+				["at0094"] = <
+					text = <"1-5 days ">
+					description = <"*">
+				>
+				["at0095"] = <
+					text = <"6-12 days ">
+					description = <"2">
+				>
+				["at0096"] = <
+					text = <"13-15 days ">
+					description = <"3">
+				>
+				["at0097"] = <
+					text = <"16-22 days ">
+					description = <"4">
+				>
+				["at0098"] = <
+					text = <"23-27 days">
+					description = <"5">
+				>
+				["at0099"] = <
+					text = <"Everyday">
+					description = <"6">
+				>
+				["at0100"] = <
+					text = <"13. Over the past 28 days, how many TIMES have you eaten what other people would regard as an UNUSUALLY LARGE AMOUNT OF FOOD (given the circumstances)?">
+					description = <"Questions 13-18: Please fill the appropriate umber in the boxes on the right. Remember that the questions only refer to the past four weeks (28 days). Over the past four weeks (28 days) ....">
+				>
+				["at0102"] = <
+					text = <"14. ... on how many of these times did you have a sense of having lost control over eating (at the time that you were eating)?">
+					description = <"Questions 13-18: Please fill the appropriate umber in the boxes on the right. Remember that the questions only refer to the past four weeks (28 days). Over the past four weeks (28 days) ....">
+				>
+				["at0103"] = <
+					text = <"15. Over the past 28 days, on how many DAYS have such episodes of ovreating occurred (i.e.,you have eaten an usually large amount of food and have had a sense of loss of control at the time?)">
+					description = <"Questions 13-18: Please fill the appropriate umber in the boxes on the right. Remember that the questions only refer to the past four weeks (28 days). Over the past four weeks (28 days) ....">
+				>
+				["at0104"] = <
+					text = <"16. Over the past 28 days, how many TIMES have you made  yourself sick (vomit) as a means of controlling your shape or weight?">
+					description = <"Questions 13-18: Please fill the appropriate umber in the boxes on the right. Remember that the questions only refer to the past four weeks (28 days). Over the past four weeks (28 days) ....">
+				>
+				["at0105"] = <
+					text = <"17. Over the past 28 days, how many TIMES have you taken laxatives as a means of controlling  your shape or weight?">
+					description = <"Questions 13-18: Please fill the appropriate umber in the boxes on the right. Remember that the questions only refer to the past four weeks (28 days). Over the past four weeks (28 days) ....">
+				>
+				["at0106"] = <
+					text = <"18. Over the past 28 days, how many TIMES have you exrecised in a \"driven\" or \"compulsive\" way as a means of controlling your weight, shape or amount of fat, or to burn of calories?">
+					description = <"Questions 13-18: Please fill the appropriate umber in the boxes on the right. Remember that the questions only refer to the past four weeks (28 days). Over the past four weeks (28 days) ....">
+				>
+				["at0107"] = <
+					text = <"19. Over the past 28 days, on how many days have you eaten  in secret (ie, furtively)? ... Do not count episodes of binge eating">
+					description = <"Questions: 19 to 21: Please circle the appropriate number. Please note that for these questions the term \"binge eating\" means eating what others would regard as an unusually large amount of food for circumstances, accompanied by a sense of having lost control over eating. ">
+				>
+				["at0108"] = <
+					text = <"No days ">
+					description = <"0">
+				>
+				["at0109"] = <
+					text = <"1-5 days">
+					description = <"1">
+				>
+				["at0110"] = <
+					text = <"6-12 days">
+					description = <"2">
+				>
+				["at0111"] = <
+					text = <"13-15 days ">
+					description = <"3">
+				>
+				["at0112"] = <
+					text = <"16-22 days ">
+					description = <"4">
+				>
+				["at0113"] = <
+					text = <"23-27 days">
+					description = <"5">
+				>
+				["at0114"] = <
+					text = <"Everyday">
+					description = <"*">
+				>
+				["at0115"] = <
+					text = <"20. On what proportion of the times that you have eaten  have you felt guilty (felt that you´ve done wrong) because of its effect on your shape or weight? ...Do not count episodes of binge eating. ">
+					description = <"Questions: 19 to 21: Please circle the appropriate number. Please note that for these questions the term \"binge eating\" means eating what others would regard as an unusually large amount of food for circumstances, accompanied by a sense of having lost control over eating. ">
+				>
+				["at0116"] = <
+					text = <"None of the times">
+					description = <"0">
+				>
+				["at0117"] = <
+					text = <"A few of the times">
+					description = <"1">
+				>
+				["at0118"] = <
+					text = <"Less than half">
+					description = <"2">
+				>
+				["at0119"] = <
+					text = <"Half of the times">
+					description = <"3">
+				>
+				["at0120"] = <
+					text = <"More than half ">
+					description = <"4">
+				>
+				["at0121"] = <
+					text = <"Most of the time">
+					description = <"5">
+				>
+				["at0122"] = <
+					text = <"Every time">
+					description = <"6">
+				>
+				["at0129"] = <
+					text = <"21. Over the past 28 days,how concerned have you been about other people seeing you eat? ... Do not count episodes of binge eating">
+					description = <"Questions: 19 to 21: Please circle the appropriate number. Please note that for these questions the term \"binge eating\" means eating what others would regard as an unusually large amount of food for circumstances, accompanied by a sense of having lost control over eating.  Not all (0 - 1) Slightly (2-3) Moderately (4-5), Markedly (6)">
+				>
+				["at0130"] = <
+					text = <"22. Has your WEIGHT influenced how you think about (judge) yourself as a person?">
+					description = <"Questions 22 to 28: Please check the appropriate umber on the right. Remember that the questions only refer to the past four weeks (28 days). Not all (0 - 1) Slightly (2-3) Moderately (4-5), Markedly (6)">
+				>
+				["at0131"] = <
+					text = <"23. Has your SHAPE influenced  how you think about  (judge) yourself as a person?">
+					description = <"Questions 22 to 28: Please check the appropriate umber on the right. Remember that the questions only refer to the past four weeks (28 days). Not all (0 - 1) Slightly (2-3) Moderately (4-5), Markedly (6)">
+				>
+				["at0132"] = <
+					text = <"24. How much would it have upset you if you had been asked to weigh yourself  once a week (no more, or less, often) for the next four weeks?">
+					description = <"Questions 22 to 28: Please check the appropriate umber on the right. Remember that the questions only refer to the past four weeks (28 days). Not all (0 - 1) Slightly (2-3) Moderately (4-5), Markedly (6)">
+				>
+				["at0133"] = <
+					text = <"25. How dissatisfied have you been with your WEIGHT?">
+					description = <"Questions 22 to 28: Please check the appropriate umber on the right. Remember that the questions only refer to the past four weeks (28 days). Not all (0 - 1) Slightly (2-3) Moderately (4-5), Markedly (6)">
+				>
+				["at0134"] = <
+					text = <"26. How dissatisfied have you been with your SHAPE?">
+					description = <"Questions 22 to 28: Please check the appropriate umber on the right. Remember that the questions only refer to the past four weeks (28 days). Not all (0 - 1) Slightly (2-3) Moderately (4-5), Markedly (6)">
+				>
+				["at0135"] = <
+					text = <"27. How uncomfortable have you felt seeing your body (for example, seeing your shape in the mirror, in a shop window reflection, while undressing or taking a bath or shower)?">
+					description = <"Questions 22 to 28: Please check the appropriate umber on the right. Remember that the questions only refer to the past four weeks (28 days). Not all (0 - 1) Slightly (2-3) Moderately (4-5), Markedly (6)">
+				>
+				["at0136"] = <
+					text = <"28. How umconfortable have you felt about OTHERS seeing your shape or figure (for example, in communal changing rooms, when swimming, or wearing tight clothes)? ">
+					description = <"Questions 22 to 28: Please check the appropriate umber on the right. Remember that the questions only refer to the past four weeks (28 days). Not all (0 - 1) Slightly (2-3) Moderately (4-5), Markedly (6)">
+				>
+				["at0137"] = <
+					text = <"Total Scoring ">
+					description = <"*">
+				>
+			>
+		>
+	>
